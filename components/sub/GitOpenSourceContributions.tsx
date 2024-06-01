@@ -23,6 +23,7 @@ const OpenSourceContributions: React.FC = () => {
   const [contributions, setContributions] = useState<Contribution[]>([]);
 
   const fetchContributions = async () => {
+    console.log(process.env.NEXT_PUBLIC_GITHUB_API);
     try {
       const response = await fetch('https://api.github.com/graphql', {
         method: 'POST',
