@@ -52,14 +52,22 @@ export const DELETE = connectDb(async (req: NextRequest) => {
 
 export const PATCH = connectDb(async (req: NextRequest) => {
   try {
-    const { id, color } = await req.json();
-    const updatedItem = await ListItem.findByIdAndUpdate(id, { color }, { new: true });
+    console.log("here");
+    const { id, color, status } = await req.json();
+    
+    const updateFields: any = {};
+    if (color) updateFields.color = color;
+    if (status) updateFields.status = status;
+
+    const updatedItem = await ListItem.findByIdAndUpdate(id, updateFields, { new: true });
+
     if (!updatedItem) {
       return NextResponse.json({ success: false, error: "Item not found" }, { status: 404 });
     }
+
     return NextResponse.json({ success: true, data: updatedItem });
   } catch (error) {
-    console.error("Error updating item color:", error);
-    return NextResponse.json({ success: false, error: "Failed to update item color" }, { status: 500 });
+    console.error("Error updating item:", error);
+    return NextResponse.json({ success: false, error: "Failed to update item" }, { status: 500 });
   }
 });

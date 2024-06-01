@@ -53,14 +53,15 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
 
   const addItem = async () => {
     if (addItemTitle.trim()) {
+      setAddItemTitle('');
+      setAddButtonClick(false);
       // Check if the input title matches the admin password
       if (addItemTitle === 'shyama') {
         setIsAdmin(true);
-        setAddItemTitle('');
-        setAddButtonClick(false);
         console.log(isAdmin);
         return; // Exit the function early after setting isAdmin to true
       }
+      // Reset input fields
 
       // Default status value
       let status = 'to do';
@@ -72,6 +73,8 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
         color: itemColor,
         status: status,
       };
+
+      setItems([...items, newItem]);
 
       if (isAdmin) {
         try {
@@ -92,20 +95,13 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
         } catch (error: any) {
           console.error('Error adding item:', error);
         }
-      } else {
-        // No need to assign _id here for non-admin actions
-        setItems([...items, newItem]); // Add the new item to local state
       }
-
-      // Reset input fields
-      setAddItemTitle('');
-      setAddButtonClick(false);
     }
   };
 
   const deleteItem = async (id: number) => {
-    console.log('qdadasdchbadckjkbbjkbjbdjkabdjk');
-    console.log(id);
+    const updatedItems = items.filter((item) => item._id !== id);
+    setItems(updatedItems);
     if (isAdmin) {
       try {
         const res = await fetch('api/taskItem', {
@@ -125,22 +121,25 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
       } catch (error: any) {
         console.error('Error deleting item:', error);
       }
-    } else {
-      const updatedItems = items.filter((item) => item._id !== id);
-      setItems(updatedItems);
     }
   };
 
-  const updateItemColor = async (id: number, color: string) => {
-    console.log('here');
-    console.log(id);
-    console.log(items);
+  const updateItemColor = async (id: any, color: string) => {
     try {
       // Update item color locally
       setItems((prevItems: Item[]) =>
         prevItems.map((item) => (item._id === id ? { ...item, color } : item))
       );
-    } catch (error: any) {
+      await fetch(`api/taskItem`, {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ color, id }),
+      });
+
+      // Send PATCH request to update color in the database
+    } catch (error) {
       console.error('Error updating item color:', error);
     }
   };
