@@ -17,7 +17,7 @@ query {
 export const GET_LATEST_COMMITS = `
 {
   user(login: "sudhir-sars") {
-    repositories(first: 4, orderBy: { field: PUSHED_AT, direction: DESC }) {
+    repositories(first: 10, orderBy: { field: PUSHED_AT, direction: DESC }) {
       nodes {
         name
         refs(first: 1, refPrefix: "refs/heads/") {
