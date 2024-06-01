@@ -6,7 +6,7 @@ import OpenSourceContributions from '../sub/GitOpenSourceContributions';
 
 const GitBoard: React.FC = () => {
   return (
-    <div className="text-white">
+    <div className="text-white z-[50]">
       <div className="flex justify-center">
         <div className="w-[85vw] px-5 flex justify-end text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-purple-500 to-cyan-100">
           Git Board

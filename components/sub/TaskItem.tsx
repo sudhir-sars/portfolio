@@ -13,8 +13,8 @@ const TaskItem: React.FC<{
   deleteItem: (key: number) => void;
   updateItemColor: (key: number, color: string) => void;
 }> = ({ item, deleteItem, updateItemColor }) => {
-  const [strikeButtonHover, setStrikeButtonHover] = useState(false);
-  const [colorPickerVisible, setColorPickerVisible] = useState(false);
+  const [strikeButtonHover, setStrikeButtonHover] = useState<boolean>(false);
+  const [colorPickerVisible, setColorPickerVisible] = useState<boolean>(false);
 
   return (
     <>

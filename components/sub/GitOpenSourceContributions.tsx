@@ -1,8 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { GET_OPEN_SOURCE_CONTRIBUTIONS } from '../../constants/gitQueries';
 
-const OpenSourceContributions = () => {
-  const [contributions, setContributions] = useState([]);
+interface Contribution {
+  pullRequest?: {
+    url: string;
+    title: string;
+  };
+  issue?: {
+    url: string;
+    title: string;
+  };
+  repository: {
+    name: string;
+  };
+  createdAt: string;
+  author: {
+    login: string;
+  };
+}
+
+const OpenSourceContributions: React.FC = () => {
+  const [contributions, setContributions] = useState<Contribution[]>([]);
 
   const fetchContributions = async () => {
     try {
@@ -10,7 +28,7 @@ const OpenSourceContributions = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `bearer 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`,
+          Authorization: `Bearer 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`,
         },
         body: JSON.stringify({ query: GET_OPEN_SOURCE_CONTRIBUTIONS }),
       });
@@ -21,11 +39,16 @@ const OpenSourceContributions = () => {
 
       const { data } = await response.json();
 
-      const pullRequestContributions = data.user.contributionsCollection.pullRequestContributionsByRepository;
-      const issueContributions = data.user.contributionsCollection.issueContributionsByRepository;
+      const pullRequestContributions =
+        data.user.contributionsCollection.pullRequestContributionsByRepository;
+      const issueContributions =
+        data.user.contributionsCollection.issueContributionsByRepository;
 
       // Combine pull request and issue contributions
-      const allContributions = [...pullRequestContributions, ...issueContributions];
+      const allContributions: Contribution[] = [
+        ...pullRequestContributions,
+        ...issueContributions,
+      ];
 
       setContributions(allContributions);
     } catch (error) {
@@ -47,19 +70,49 @@ const OpenSourceContributions = () => {
           </div>
         )}
         {contributions.map((contribution, index) => (
-          <a key={index} href={contribution.pullRequest ? contribution.pullRequest.url : contribution.issue.url} target="_blank" rel="noopener noreferrer">
+          <a
+            key={index}
+            href={
+              contribution.pullRequest
+                ? contribution.pullRequest.url
+                : contribution.issue!.url
+            }
+            target="_blank"
+            rel="noopener noreferrer"
+          >
             <div className="contribution bg-gray-100 p-4 rounded-lg shadow-md w-[20vw] h-[20vh] button-primary">
-              <h2 className="repo-name text-blue-500 font-bold">{contribution.repository.name}</h2>
+              <h2 className="repo-name text-blue-500 font-bold">
+                {contribution.repository.name}
+              </h2>
               {contribution.pullRequest && (
                 <p className="contribution-type text-gray-400">Pull Request</p>
               )}
               {contribution.issue && (
                 <p className="contribution-type text-gray-400">Issue</p>
               )}
-              <p className="contribution-title text-gray-700">{contribution.pullRequest ? contribution.pullRequest.title : contribution.issue.title}</p>
-              <p className="contribution-created-at text-gray-700">Created At: {new Date(contribution.createdAt).toLocaleString()}</p>
-              <p className="contribution-author text-gray-700">Author: {contribution.author.login}</p>
-              <a href={contribution.pullRequest ? contribution.pullRequest.url : contribution.issue.url} target="_blank" rel="noopener noreferrer" className="btn-primary">View Contribution</a>
+              <p className="contribution-title text-gray-700">
+                {contribution.pullRequest
+                  ? contribution.pullRequest.title
+                  : contribution.issue!.title}
+              </p>
+              <p className="contribution-created-at text-gray-700">
+                Created At: {new Date(contribution.createdAt).toLocaleString()}
+              </p>
+              <p className="contribution-author text-gray-700">
+                Author: {contribution.author.login}
+              </p>
+              <a
+                href={
+                  contribution.pullRequest
+                    ? contribution.pullRequest.url
+                    : contribution.issue!.url
+                }
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn-primary"
+              >
+                View Contribution
+              </a>
             </div>
           </a>
         ))}

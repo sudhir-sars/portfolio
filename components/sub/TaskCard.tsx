@@ -20,9 +20,9 @@ interface Item {
 
 const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
   const [items, setItems] = useState<Item[]>([]);
-  const [addButtonClick, setAddButtonClick] = useState(false);
-  const [addItemTitle, setAddItemTitle] = useState('');
-  const [itemColor, setItemColor] = useState('bg-red-500');
+  const [addButtonClick, setAddButtonClick] = useState<boolean>(false);
+  const [addItemTitle, setAddItemTitle] = useState<string>('');
+  const [itemColor, setItemColor] = useState<string>('bg-red-500');
 
   useEffect(() => {
     const fetchItems = async () => {
@@ -30,7 +30,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
         const res = await fetch('http://localhost:3000/api/taskItem');
         const data = await res.json();
         if (res.ok) {
-          const filteredItems = data.data.filter((item: Item) => {
+          const filteredItems: Item[] = data.data.filter((item: Item) => {
             if (title === 'To Do') return item.status === 'to do';
             if (title === 'Under Progress')
               return item.status === 'in progress';
@@ -41,7 +41,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
         } else {
           console.error('Failed to fetch items');
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error fetching items:', error);
       }
     };
@@ -87,7 +87,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
           } else {
             console.error('Failed to add item');
           }
-        } catch (error) {
+        } catch (error: any) {
           console.error('Error adding item:', error);
         }
       } else {
@@ -120,7 +120,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
         } else {
           console.error('Failed to delete item');
         }
-      } catch (error) {
+      } catch (error: any) {
         console.error('Error deleting item:', error);
       }
     } else {
@@ -135,10 +135,10 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
     console.log(items);
     try {
       // Update item color locally
-      setItems((prevItems) =>
+      setItems((prevItems: Item[]) =>
         prevItems.map((item) => (item._id === id ? { ...item, color } : item))
       );
-    } catch (error) {
+    } catch (error: any) {
       console.error('Error updating item color:', error);
     }
   };
