@@ -1,19 +1,28 @@
 'use client';
-import React, { useState } from 'react';
+import React, { useState, ChangeEvent, FormEvent } from 'react';
 
-const Contact = () => {
-  const [formData, setFormData] = useState({
+interface FormData {
+  name: string;
+  email: string;
+  mobile: string;
+  message: string;
+}
+
+const Contact: React.FC = () => {
+  const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
     mobile: '',
     message: '',
   });
 
-  const handleChange = (e) => {
+  const handleChange = (
+    e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     try {
@@ -53,6 +62,7 @@ const Contact = () => {
                   name="name"
                   className="px-5 button-primary outline-none rounded-lg p-2 w-full"
                   onChange={handleChange}
+                  value={formData.name}
                   required
                 />
               </div>
@@ -66,6 +76,7 @@ const Contact = () => {
                   name="email"
                   className="px-5 button-primary outline-none rounded-lg p-2 w-full"
                   onChange={handleChange}
+                  value={formData.email}
                   required
                 />
               </div>
@@ -80,6 +91,7 @@ const Contact = () => {
                   name="mobile"
                   className="px-5 button-primary outline-none rounded-lg p-2 w-full"
                   onChange={handleChange}
+                  value={formData.mobile}
                 />
               </div>
               <div className="mb-4">
@@ -89,11 +101,12 @@ const Contact = () => {
                 <textarea
                   id="message"
                   name="message"
-                  rows="7"
-                  className=" px-5 py-4 button-primary outline-none rounded-lg p-2 w-full"
+                  rows={7}
+                  className="px-5 py-4 button-primary outline-none rounded-lg p-2 w-full"
                   onChange={handleChange}
+                  value={formData.message}
                   required
-                ></textarea>
+                />
               </div>
               <button
                 type="submit"

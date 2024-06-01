@@ -1,12 +1,12 @@
 import React from 'react';
 
-const About = () => {
+const About: React.FC = () => {
   return (
     <div className="container mx-auto px-4 py-8 mt-16 flex justify-center ">
       <div className="bg-gray-800 text-white rounded-lg shadow-lg p-8 w-[70%] button-primary-without-hover">
         <h1 className="text-3xl font-bold mb-4">About Me</h1>
         <p className="text-lg mb-6">
-          Hi there! I'm a passionate web developer with a keen interest in
+          Hi there! I&apos;m a passionate web developer with a keen interest in
           backend development. I love bringing ideas to life through code and
           creating engaging digital experiences.
         </p>
