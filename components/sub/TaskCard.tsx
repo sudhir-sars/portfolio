@@ -27,7 +27,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
   useEffect(() => {
     const fetchItems = async () => {
       try {
-        const res = await fetch('http://localhost:3000/api/taskItem');
+        const res = await fetch('api/taskItem');
         const data = await res.json();
         if (res.ok) {
           const filteredItems: Item[] = data.data.filter((item: Item) => {
@@ -76,7 +76,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
 
       if (isAdmin) {
         try {
-          const res = await fetch('http://localhost:3000/api/taskItem', {
+          const res = await fetch('api/taskItem', {
             method: 'POST',
             headers: {
               'Content-Type': 'application/json',
@@ -107,7 +107,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
   const deleteItem = async (id: number) => {
     if (isAdmin) {
       try {
-        const res = await fetch('http://localhost:3000/api/taskItem', {
+        const res = await fetch('api/taskItem', {
           method: 'DELETE',
           headers: {
             'Content-Type': 'application/json',
