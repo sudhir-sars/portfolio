@@ -10,7 +10,7 @@ const GitCommits = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `bearer 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`,
+          Authorization: `bearer ${process.env.NEXT_PUBLIC_GITHUB_API}`,
         },
         body: JSON.stringify({ query: GET_LATEST_COMMITS }),
       });

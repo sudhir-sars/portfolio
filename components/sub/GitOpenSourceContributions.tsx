@@ -28,7 +28,7 @@ const OpenSourceContributions: React.FC = () => {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-          Authorization: `Bearer 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`,
+          Authorization: `Bearer ${process.env.NEXT_PUBLIC_GITHUB_API}`,
         },
         body: JSON.stringify({ query: GET_OPEN_SOURCE_CONTRIBUTIONS }),
       });
