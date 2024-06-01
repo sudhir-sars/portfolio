@@ -12,7 +12,7 @@ interface TaskCardProps {
 }
 
 interface Item {
-  _id?: number;
+  id: number;
   title: string;
   color: string;
   status: string;
@@ -49,6 +49,8 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
     fetchItems();
   }, [title]);
 
+  // Rest of your component code remains unchanged
+
   const addItem = async () => {
     if (addItemTitle.trim()) {
       // Check if the input title matches the admin password
@@ -66,6 +68,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
       else if (title === 'Accomplished') status = 'completed';
 
       const newItem: Item = {
+        id: Date.now(), // Use current timestamp as _id
         title: addItemTitle,
         color: itemColor,
         status: status,
@@ -91,10 +94,8 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
           console.error('Error adding item:', error);
         }
       } else {
-        // Assign ID only if the database operation is not occurring
-        newItem._id = Math.floor(Math.random() * 100000); // Use today's date as _id
+        // No need to assign _id here for non-admin actions
         setItems([...items, newItem]); // Add the new item to local state
-        console.log(items);
       }
 
       // Reset input fields
@@ -115,7 +116,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
         });
 
         if (res.ok) {
-          const updatedItems = items.filter((item) => item._id !== id);
+          const updatedItems = items.filter((item) => item.id !== id);
           setItems(updatedItems);
         } else {
           console.error('Failed to delete item');
@@ -124,7 +125,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
         console.error('Error deleting item:', error);
       }
     } else {
-      const updatedItems = items.filter((item) => item._id !== id);
+      const updatedItems = items.filter((item) => item.id !== id);
       setItems(updatedItems);
     }
   };
@@ -136,7 +137,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
     try {
       // Update item color locally
       setItems((prevItems: Item[]) =>
-        prevItems.map((item) => (item._id === id ? { ...item, color } : item))
+        prevItems.map((item) => (item.id === id ? { ...item, color } : item))
       );
     } catch (error: any) {
       console.error('Error updating item color:', error);
@@ -155,7 +156,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
         <div className="space-y-2">
           {items.map((item) => (
             <TaskItem
-              key={item._id}
+              key={item.id}
               item={item}
               deleteItem={deleteItem}
               updateItemColor={updateItemColor}

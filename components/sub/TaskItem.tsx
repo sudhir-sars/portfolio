@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { FaCircle, FaRegCircle } from 'react-icons/fa';
 
 interface Item {
-  _id: number;
+  id: number;
   title: string;
   color: string;
   status: string;
@@ -19,12 +19,12 @@ const TaskItem: React.FC<{
   return (
     <>
       <div
-        key={item._id}
+        key={item.id}
         className={`button-primary rounded-xl text-xl flex items-center justify-between relative w-full`}
       >
         <div className="flex items-center p-2">
           <div
-            onClick={() => deleteItem(item._id)}
+            onClick={() => deleteItem(item.id)}
             onMouseEnter={() => setStrikeButtonHover(true)}
             onMouseLeave={() => setStrikeButtonHover(false)}
             className="mx-2 text-[1rem]"
@@ -48,35 +48,35 @@ const TaskItem: React.FC<{
             <div
               className="bg-green-500 w-5 h-5 rounded-full cursor-pointer"
               onClick={() => {
-                updateItemColor(item._id, 'bg-green-500');
+                updateItemColor(item.id, 'bg-green-500');
                 setColorPickerVisible(false);
               }}
             ></div>
             <div
               className="bg-red-500 w-5 h-5 rounded-full cursor-pointer"
               onClick={() => {
-                updateItemColor(item._id, 'bg-red-500');
+                updateItemColor(item.id, 'bg-red-500');
                 setColorPickerVisible(false);
               }}
             ></div>
             <div
               className="bg-pink-500 w-5 h-5 rounded-full cursor-pointer"
               onClick={() => {
-                updateItemColor(item._id, 'bg-pink-500');
+                updateItemColor(item.id, 'bg-pink-500');
                 setColorPickerVisible(false);
               }}
             ></div>
             <div
               className="bg-indigo-300 w-5 h-5 rounded-full cursor-pointer"
               onClick={() => {
-                updateItemColor(item._id, 'bg-indigo-300');
+                updateItemColor(item.id, 'bg-indigo-300');
                 setColorPickerVisible(false);
               }}
             ></div>
             <div
               className="bg-yellow-300 w-5 h-5 rounded-full cursor-pointer"
               onClick={() => {
-                updateItemColor(item._id, 'bg-yellow-300');
+                updateItemColor(item.id, 'bg-yellow-300');
                 setColorPickerVisible(false);
               }}
             ></div>
