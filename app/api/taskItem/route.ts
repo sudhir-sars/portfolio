@@ -17,11 +17,14 @@ export const GET = connectDb(async (req: NextRequest) => {
 export const POST = connectDb(async (req: NextRequest) => {
   try {
     const { title, color, status } = await req.json();
+    
     const newItem = new ListItem({
       title,
       color,
       status,
+     
     });
+    console.log(newItem)
     await newItem.save();
     return NextResponse.json({ success: true, data: newItem }, { status: 201 });
   } catch (error) {
@@ -32,7 +35,10 @@ export const POST = connectDb(async (req: NextRequest) => {
 
 export const DELETE = connectDb(async (req: NextRequest) => {
   try {
+    console.log("in delete");
+    
     const { id } = await req.json();
+    console.log(id);
     const deletedItem = await ListItem.findByIdAndDelete(id);
     if (!deletedItem) {
       return NextResponse.json({ success: false, error: "Item not found" }, { status: 404 });

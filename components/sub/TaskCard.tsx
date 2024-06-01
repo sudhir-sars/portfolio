@@ -12,7 +12,7 @@ interface TaskCardProps {
 }
 
 interface Item {
-  id: number;
+  _id?: any;
   title: string;
   color: string;
   status: string;
@@ -68,7 +68,6 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
       else if (title === 'Accomplished') status = 'completed';
 
       const newItem: Item = {
-        id: Date.now(), // Use current timestamp as _id
         title: addItemTitle,
         color: itemColor,
         status: status,
@@ -105,6 +104,8 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
   };
 
   const deleteItem = async (id: number) => {
+    console.log('qdadasdchbadckjkbbjkbjbdjkabdjk');
+    console.log(id);
     if (isAdmin) {
       try {
         const res = await fetch('api/taskItem', {
@@ -116,7 +117,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
         });
 
         if (res.ok) {
-          const updatedItems = items.filter((item) => item.id !== id);
+          const updatedItems = items.filter((item) => item._id !== id);
           setItems(updatedItems);
         } else {
           console.error('Failed to delete item');
@@ -125,7 +126,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
         console.error('Error deleting item:', error);
       }
     } else {
-      const updatedItems = items.filter((item) => item.id !== id);
+      const updatedItems = items.filter((item) => item._id !== id);
       setItems(updatedItems);
     }
   };
@@ -137,7 +138,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
     try {
       // Update item color locally
       setItems((prevItems: Item[]) =>
-        prevItems.map((item) => (item.id === id ? { ...item, color } : item))
+        prevItems.map((item) => (item._id === id ? { ...item, color } : item))
       );
     } catch (error: any) {
       console.error('Error updating item color:', error);
@@ -156,7 +157,7 @@ const TaskCard: React.FC<TaskCardProps> = ({ title, isAdmin, setIsAdmin }) => {
         <div className="space-y-2">
           {items.map((item) => (
             <TaskItem
-              key={item.id}
+              key={item._id}
               item={item}
               deleteItem={deleteItem}
               updateItemColor={updateItemColor}
