@@ -3,12 +3,20 @@
 import { useQuery } from "convex/react";
 import { api } from "@/convex/_generated/api";
 import Link from "next/link";
+import { use } from "react";
 
-interface Props {
-  slug: string;
-}
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
 
-export function LinkDetail({ slug }: Props) {
+import { ArrowLeft, ExternalLink } from "lucide-react";
+
+export default function LinkDetail({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = use(params);
+
   const link = useQuery(api.links.getBySlug, { slug });
   const clicks = useQuery(
     api.clickEvents.getByLink,
@@ -29,81 +37,139 @@ export function LinkDetail({ slug }: Props) {
     return "Desktop";
   }
 
+  // 🔄 Loading
   if (link === undefined || clicks === undefined) {
     return (
-      <div className="max-w-3xl mx-auto px-6 py-8">
-        <div className="h-5 w-24 bg-gray-100 rounded animate-pulse mb-6" />
-        <div className="h-64 bg-gray-100 rounded-xl animate-pulse" />
+      <div className="max-w-5xl mx-auto px-6 py-10 space-y-6">
+        <div className="h-6 w-32 bg-muted rounded animate-pulse" />
+        <div className="h-28 bg-muted rounded-xl animate-pulse" />
+        <div className="h-64 bg-muted rounded-xl animate-pulse" />
       </div>
     );
   }
 
+  // ❌ Not found
   if (link === null) {
     return (
-      <div className="max-w-3xl mx-auto px-6 py-8">
-        <Link href="/links" className="text-sm text-gray-400 hover:text-gray-900 transition-colors">
-          ← All links
+      <div className="max-w-5xl mx-auto px-6 py-10">
+        <Link
+          href="/links"
+          className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
+        >
+          <ArrowLeft className="h-4 w-4" />
+          Back to links
         </Link>
-        <p className="mt-8 text-sm text-gray-400">Link not found.</p>
+
+        <p className="mt-10 text-muted-foreground">Link not found.</p>
       </div>
     );
   }
 
   return (
-    <div className="max-w-3xl mx-auto px-6 py-8">
+    <div className="max-w-5xl mx-auto px-6 py-10 space-y-8">
+      
+      {/* 🔙 Back */}
       <Link
         href="/links"
-        className="inline-flex items-center gap-1.5 text-sm text-gray-400 hover:text-gray-900 transition-colors mb-6"
+        className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
       >
-        ← All links
+        <ArrowLeft className="h-4 w-4" />
+        Back to links
       </Link>
 
-      {/* Header */}
-      <div className="mb-6">
-      
-        {link.label && <p className="text-sm text-gray-500 mt-1">{link.label}</p>}
-        <a
-          href={link.destination}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-xs text-blue-500 hover:underline mt-0.5 inline-block"
-        >
-          {link.destination}
-        </a>
-      </div>
+      {/* 🧠 Header */}
+      <Card>
+        <CardContent className="p-6 space-y-3">
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-2xl font-semibold tracking-tight">
+                /{link.slug}
+              </h1>
 
-      {/* Clicks table */}
-      <div className="border border-gray-200 rounded-xl overflow-hidden">
-        <div className="px-4 py-3 border-b border-gray-100 flex items-center justify-between">
-          <p className="text-xs font-medium text-gray-400 uppercase tracking-wide">Click events</p>
-          <span className="text-xs font-mono text-gray-400">{clicks.length} total</span>
-        </div>
+              {link.label && (
+                <p className="text-sm text-muted-foreground mt-1">
+                  {link.label}
+                </p>
+              )}
+            </div>
 
-        {clicks.length === 0 ? (
-          <p className="text-sm text-gray-400 py-10 text-center">No clicks yet</p>
-        ) : (
-          <table className="w-full text-sm">
-            <thead>
-              <tr className="border-b border-gray-100 bg-gray-50">
-                <th className="text-left px-4 py-2.5 text-xs font-medium text-gray-400 uppercase tracking-wide">Time</th>
-                <th className="text-left px-4 py-2.5 text-xs font-medium text-gray-400 uppercase tracking-wide">Country</th>
-                <th className="text-left px-4 py-2.5 text-xs font-medium text-gray-400 uppercase tracking-wide">City</th>
-                <th className="text-left px-4 py-2.5 text-xs font-medium text-gray-400 uppercase tracking-wide">Device</th>
-              </tr>
-            </thead>
-            <tbody className="divide-y divide-gray-100">
-              {clicks.map((click) => (
-                <tr key={click._id}>
-                  <td className="px-4 py-2.5 font-mono text-xs text-gray-400">{timeAgo(click.clickedAt)}</td>
-                  <td className="px-4 py-2.5 text-gray-600">{click.country ?? "—"}</td>
-                  <td className="px-4 py-2.5 text-gray-600">{click.city ?? "—"}</td>
-                  <td className="px-4 py-2.5 text-gray-600">{click.userAgent ? parseDevice(click.userAgent) : "—"}</td>
+            <Badge variant="secondary" className="font-mono">
+              {link.totalClicks.toLocaleString()} clicks
+            </Badge>
+          </div>
+
+          <a
+            href={link.destination}
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-blue-500 hover:underline inline-flex items-center gap-1"
+          >
+            {link.destination}
+            <ExternalLink className="h-3 w-3" />
+          </a>
+        </CardContent>
+      </Card>
+
+      {/* 📊 Clicks */}
+      <Card className="overflow-hidden">
+        <CardContent className="p-0">
+          <div className="px-6 py-4 border-b flex items-center justify-between">
+            <p className="text-sm font-medium">Click Events</p>
+            <span className="text-xs text-muted-foreground font-mono">
+              {clicks.length} total
+            </span>
+          </div>
+
+          {clicks.length === 0 ? (
+            <div className="py-16 text-center text-muted-foreground">
+              No clicks yet
+            </div>
+          ) : (
+            <table className="w-full text-sm">
+              <thead>
+                <tr className="border-b bg-muted/40">
+                  <th className="text-left px-6 py-3 text-xs font-medium text-muted-foreground uppercase">
+                    Time
+                  </th>
+                  <th className="text-left px-6 py-3 text-xs font-medium text-muted-foreground uppercase">
+                    Country
+                  </th>
+                  <th className="text-left px-6 py-3 text-xs font-medium text-muted-foreground uppercase">
+                    City
+                  </th>
+                  <th className="text-left px-6 py-3 text-xs font-medium text-muted-foreground uppercase">
+                    Device
+                  </th>
                 </tr>
-              ))}
-            </tbody>
-          </table>
-        )}
-      </div>
+              </thead>
+
+              <tbody>
+                {clicks.map((click) => (
+                  <tr
+                    key={click._id}
+                    className="border-b hover:bg-muted/40 transition"
+                  >
+                    <td className="px-6 py-3 font-mono text-xs text-muted-foreground">
+                      {timeAgo(click.clickedAt)}
+                    </td>
+                    <td className="px-6 py-3">
+                      {click.country ?? "—"}
+                    </td>
+                    <td className="px-6 py-3">
+                      {click.city ?? "—"}
+                    </td>
+                    <td className="px-6 py-3">
+                      {click.userAgent
+                        ? parseDevice(click.userAgent)
+                        : "—"}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          )}
+        </CardContent>
+      </Card>
     </div>
   );
 }

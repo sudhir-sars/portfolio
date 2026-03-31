@@ -1,17 +1,25 @@
 import { clerkMiddleware, createRouteMatcher } from "@clerk/nextjs/server";
 import { NextResponse } from "next/server";
 
-const isProtectedRoute = createRouteMatcher(["/admin(.*)", "/api/(.*)"]);
+const isProtectedRoute = createRouteMatcher(["/admin(.*)", "/links(.*)"]);
 
 export default clerkMiddleware(async (auth, req) => {
+  // Redirect root → /cv
   if (req.nextUrl.pathname === "/") {
     const url = req.nextUrl.clone();
     url.pathname = "/cv";
     return NextResponse.redirect(url);
   }
 
+  // Protect routes
   if (isProtectedRoute(req)) {
-    await auth.protect();
+    const { sessionClaims } = await auth.protect();
+
+    const role = sessionClaims?.metadata?.role;
+
+    if (role !== "admin") {
+      return new NextResponse("Forbidden", { status: 403 });
+    }
   }
 });
 

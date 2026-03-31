@@ -28,10 +28,10 @@ export default function RootLayout({
 
   return (
     <html
-      lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
-      <body className="min-h-full flex flex-col">
+        lang="en"
+        className={`${geistSans.className} ${geistMono.className} h-full antialiased`}
+      >
+      <body className="min-h-svh min-w-svw flex flex-col">
         <ClerkProvider>
           <ConvexClientProvider>
             {children}
