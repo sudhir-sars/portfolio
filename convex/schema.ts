@@ -5,10 +5,10 @@ export default defineSchema({
   links: defineTable({
     slug: v.string(),
     destination: v.string(),
-    label: v.optional(v.string()),
-    intendedFor: v.optional(v.string()),
-    active: v.boolean(),
+    label: v.string(),
     createdAt: v.number(),
+    totalClicks: v.number(),
+    lastClickedAt: v.optional(v.number()),
   }).index("by_slug", ["slug"]),
 
   clickEvents: defineTable({
