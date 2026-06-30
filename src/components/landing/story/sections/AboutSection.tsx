@@ -99,6 +99,19 @@ export function AboutSection() {
             </ul>
           </div>
         </div>
+
+        <div className="rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+          <h3 className="text-xs uppercase tracking-[0.15em] text-white/35">
+            Why the black hole?
+          </h3>
+          <p className="mt-3 text-sm leading-relaxed text-white/60">
+            The background isn&apos;t just for the mood. I&apos;m genuinely into
+            space, rockets, and the brutal engineering that gets things off the
+            ground, so a black hole quietly running behind everything felt right.
+            The same pull toward hard, unforgiving systems is what got me into
+            engineering in the first place.
+          </p>
+        </div>
       </div>
     </ChapterSheet>
   );

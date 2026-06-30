@@ -38,7 +38,10 @@ export function ChapterSheet({
     <section
       ref={sectionRef}
       id={id}
-      className="flex min-h-screen items-center justify-center "
+      // min-h-screen, not h-screen: each sheet is at least a screen tall but
+      // grows with its content. The vertical padding guarantees a tall card
+      // never collides with the next/previous sheet.
+      className="flex min-h-screen w-full items-center justify-center px-4 py-20 sm:px-6 md:px-8"
     >
       <motion.div
         initial={{ opacity: 0, y: 64 }}

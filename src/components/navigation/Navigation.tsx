@@ -118,7 +118,7 @@ export function Navigation() {
                     <span>
                       {reads === undefined
                         ? "..."
-                        : `${formatReads(reads)} Viewers`}
+                        : `${formatReads(reads)} Views`}
                     </span>
                   </>
                 )}
