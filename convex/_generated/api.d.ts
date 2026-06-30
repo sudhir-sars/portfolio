@@ -8,8 +8,9 @@
  * @module
  */
 
-import type * as clickEvents from "../clickEvents.js";
-import type * as links from "../links.js";
+import type * as contact from "../contact.js";
+import type * as messages from "../messages.js";
+import type * as views from "../views.js";
 
 import type {
   ApiFromModules,
@@ -18,8 +19,9 @@ import type {
 } from "convex/server";
 
 declare const fullApi: ApiFromModules<{
-  clickEvents: typeof clickEvents;
-  links: typeof links;
+  contact: typeof contact;
+  messages: typeof messages;
+  views: typeof views;
 }>;
 
 /**
