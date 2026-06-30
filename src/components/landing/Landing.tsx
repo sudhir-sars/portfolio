@@ -25,7 +25,7 @@ export function Landing() {
         initial={{ opacity: 0, filter: "blur(12px)" }}
         animate={{ opacity: 1, filter: "blur(0px)" }}
         transition={{ duration: DURATION.slow, ease: EASE.out, delay: 0.2 }}
-        className="text-6xl font-semibold tracking-[0.18em] text-white sm:text-8xl md:text-9xl"
+        className="text-5xl font-semibold tracking-[0.18em] text-white sm:text-8xl md:text-9xl"
       >
         README
       </motion.h1>
@@ -34,7 +34,7 @@ export function Landing() {
         initial={{ opacity: 0, filter: "blur(12px)" }}
         animate={{ opacity: 1, filter: "blur(0px)" }}
         transition={{ duration: DURATION.slow, ease: EASE.out, delay: 0.5 }}
-        className="mt-6 text-sm font-light uppercase tracking-[0.35em] text-white/55 sm:text-base"
+        className="mt-6 text-xs font-light uppercase tracking-[0.25em] text-white/55 sm:text-base sm:tracking-[0.35em]"
       >
         Start from the beginning.
       </motion.p>

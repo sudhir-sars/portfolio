@@ -82,7 +82,7 @@ export function JourneySection() {
                 {page.ghost && (
                   <span
                     aria-hidden
-                    className="pointer-events-none absolute right-0 top-0 z-0 select-none font-mono text-7xl font-bold leading-none text-white/[0.05] sm:text-9xl"
+                    className="pointer-events-none absolute right-0 top-0 z-0 hidden select-none font-mono font-bold leading-none text-white/[0.05] sm:block sm:text-9xl"
                   >
                     {page.ghost}
                   </span>

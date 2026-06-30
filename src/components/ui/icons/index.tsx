@@ -1,11 +1,13 @@
 import {
   ArrowRight01Icon,
+  Cancel01Icon,
   File01Icon,
   GithubIcon as GithubIconHg,
   LibraryIcon,
   Linkedin02Icon,
   MailAtSign02Icon,
   MailSend02Icon,
+  Menu01Icon,
   NewTwitterIcon,
   QuillWrite02Icon,
   TimeHalfPassIcon,
@@ -46,3 +48,5 @@ export const ArrowRightIcon = createIcon(ArrowRight01Icon);
 export const TwitterIcon = createIcon(NewTwitterIcon);
 export const LinkedinIcon = createIcon(Linkedin02Icon);
 export const GithubIcon = createIcon(GithubIconHg);
+export const MenuIcon = createIcon(Menu01Icon);
+export const CloseIcon = createIcon(Cancel01Icon);
