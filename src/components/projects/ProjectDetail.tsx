@@ -30,7 +30,7 @@ export function ProjectDetail({ project }: { project: FeaturedProject }) {
         initial={{ opacity: 0, y: 64 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: DURATION.slow, ease: EASE.out }}
-        className="w-full max-w-5xl"
+        className="w-full max-w-7xl"
       >
         <article className="relative flex w-full flex-col overflow-hidden rounded-[2rem] border border-white/12 bg-white/[0.08] backdrop-blur-xl shadow-[0_40px_120px_-20px_rgba(0,0,0,0.7)]">
           <div

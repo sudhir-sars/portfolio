@@ -109,7 +109,7 @@ function JourneyMoment({ page, index }: { page: JourneyPage; index: number }) {
  */
 export function JourneyExperience() {
   return (
-    <div className="mx-auto flex w-full max-w-4xl flex-col gap-6 px-4 py-24 sm:gap-8 sm:px-6 md:px-8">
+    <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-24 sm:gap-8 sm:px-6 md:px-8">
       <div className="flex items-center justify-between">
         <Link
           href="/"
