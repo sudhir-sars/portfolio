@@ -1,7 +1,7 @@
 "use client";
 
 import { useMutation, useQuery } from "convex/react";
-import { AnimatePresence, motion } from "motion/react";
+import { motion } from "motion/react";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -25,7 +25,6 @@ import {
   SheetTrigger,
 } from "@/components/ui/sheet";
 import { api } from "@/convex/_generated/api";
-import { DURATION, EASE } from "@/lib/animation";
 import { useChapterStore } from "@/store/chapter";
 
 const SECTIONS: { label: string; href: string; icon: IconComponent }[] = [
@@ -77,60 +76,40 @@ export function Navigation() {
   }, [increment]);
 
   return (
-    <motion.header
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{
-        duration: DURATION.slow,
-        ease: EASE.out,
-        delay: 0.2,
-      }}
-      className="fixed inset-x-0 top-0 z-50"
-    >
+    <header className="fixed inset-x-0 top-0 z-50">
       <nav className="mx-auto flex items-center justify-between gap-3 px-4 py-4 sm:px-8 sm:py-5 lg:px-20 xl:px-[185px]">
         <div className="rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-xl">
           <Link
             href="/#top"
             className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-xs tracking-wide text-white/60 transition-colors duration-150 hover:text-white"
           >
-            <AnimatePresence mode="wait" initial={false}>
-              <motion.span
-                key={activeChapter ? activeChapter.number : "readme"}
-                initial={{ opacity: 0, y: 5 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -5 }}
-                transition={{ duration: 0.2, ease: EASE.out }}
-                className="inline-flex items-center gap-1.5"
-              >
-                {activeChapter ? (
-                  <>
-                    <span className="tracking-[0.2em] text-white/90">
-                      {activeChapter.number}
-                    </span>
+            <span className="inline-flex items-center gap-1.5">
+              {activeChapter ? (
+                <>
+                  <span className="tracking-[0.2em] text-white/90">
+                    {activeChapter.number}
+                  </span>
 
-                    <span className="text-white/20">|</span>
+                  <span className="text-white/20">|</span>
 
-                    <span>{activeChapter.name}</span>
-                  </>
-                ) : (
-                  <>
-                    <span className="tracking-[0.2em] text-white/90">
-                      README
-                    </span>
+                  <span>{activeChapter.name}</span>
+                </>
+              ) : (
+                <>
+                  <span className="tracking-[0.2em] text-white/90">README</span>
 
-                    <span className="text-white/20">|</span>
+                  <span className="text-white/20">|</span>
 
-                    <ViewIcon className="h-3.5 w-3.5 " />
+                  <ViewIcon className="h-3.5 w-3.5 " />
 
-                    <span>
-                      {reads === undefined
-                        ? "..."
-                        : `${formatReads(reads)} Views`}
-                    </span>
-                  </>
-                )}
-              </motion.span>
-            </AnimatePresence>
+                  <span>
+                    {reads === undefined
+                      ? "..."
+                      : `${formatReads(reads)} Views`}
+                  </span>
+                </>
+              )}
+            </span>
           </Link>
         </div>
 
@@ -231,6 +210,6 @@ export function Navigation() {
           })}
         </ul>
       </nav>
-    </motion.header>
+    </header>
   );
 }

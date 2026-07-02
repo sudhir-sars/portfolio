@@ -1,13 +1,11 @@
 "use client";
 
-import { motion } from "motion/react";
 import { useRef } from "react";
 import { ScrollIndicator } from "@/components/home/ScrollIndicator";
-import { DURATION, EASE } from "@/lib/animation";
 import { useTrackActiveChapter } from "@/store/chapter";
 
 /**
- * The opening screen. Full viewport, transparent over the background video,
+ * The opening screen. Full viewport, transparent over the background image,
  * with the experience title and a single quiet instruction.
  */
 export function Landing() {
@@ -21,32 +19,17 @@ export function Landing() {
       id="top"
       className="relative flex h-screen flex-col items-center justify-center px-6 text-center"
     >
-      <motion.h1
-        initial={{ opacity: 0, filter: "blur(12px)" }}
-        animate={{ opacity: 1, filter: "blur(0px)" }}
-        transition={{ duration: DURATION.slow, ease: EASE.out, delay: 0.2 }}
-        className="text-5xl font-semibold tracking-[0.18em] text-white sm:text-8xl md:text-9xl"
-      >
+      <h1 className="text-5xl font-semibold tracking-[0.18em] text-white sm:text-8xl md:text-9xl">
         README
-      </motion.h1>
+      </h1>
 
-      <motion.p
-        initial={{ opacity: 0, filter: "blur(12px)" }}
-        animate={{ opacity: 1, filter: "blur(0px)" }}
-        transition={{ duration: DURATION.slow, ease: EASE.out, delay: 0.5 }}
-        className="mt-6 text-xs font-light uppercase tracking-[0.25em] text-white/55 sm:text-base sm:tracking-[0.35em]"
-      >
+      <p className="mt-6 text-xs font-light uppercase tracking-[0.25em] text-white/55 sm:text-base sm:tracking-[0.35em]">
         Start from the beginning.
-      </motion.p>
+      </p>
 
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ duration: DURATION.base, ease: EASE.out, delay: 1.4 }}
-        className="absolute bottom-10"
-      >
+      <div className="absolute bottom-10">
         <ScrollIndicator />
-      </motion.div>
+      </div>
     </section>
   );
 }
