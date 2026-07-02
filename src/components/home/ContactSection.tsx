@@ -1,28 +1,53 @@
 "use client";
 
 import { useAction } from "convex/react";
-import { type ReactNode, useState } from "react";
+import { useState } from "react";
+
 import { toast } from "sonner";
 import {
-  Dialog,
-  DialogContent,
-  DialogFooter,
-  DialogHeader,
-  DialogTitle,
-  DialogTrigger,
-} from "@/components/ui/dialog";
-import { ArrowRightIcon, ContactIcon } from "@/components/ui/icons";
+  ArrowRightIcon,
+  GithubIcon,
+  LinkedinIcon,
+  MailIcon,
+} from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { api } from "@/convex/_generated/api";
+import { ChapterSheet } from "./ChapterSheet";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
-export function ContactDialog({ children }: { children: ReactNode }) {
+const CONTACTS = [
+  {
+    label: "Email",
+    value: "sudhir.sars@gmail.com",
+    href: "mailto:sudhir.sars@gmail.com",
+    Icon: MailIcon,
+  },
+  {
+    label: "GitHub",
+    value: "sudhir-sars",
+    href: "https://github.com/sudhir-sars",
+    Icon: GithubIcon,
+  },
+  {
+    label: "LinkedIn",
+    value: "sudhir-sars",
+    href: "https://www.linkedin.com/in/sudhir-sars",
+    Icon: LinkedinIcon,
+  },
+  {
+    label: "X",
+    value: "@sudhir_sars",
+    href: "https://x.com/sudhir_sars",
+    Icon: GithubIcon,
+  },
+] as const;
+
+export function ContactSection() {
   const send = useAction(api.contact.send);
 
-  const [open, setOpen] = useState(false);
   const [pending, setPending] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
@@ -36,19 +61,16 @@ export function ContactDialog({ children }: { children: ReactNode }) {
       toast.error("Please enter your name.");
       return;
     }
-
     if (!EMAIL_RE.test(email.trim())) {
       toast.error("Please enter a valid email address.");
       return;
     }
-
     if (message.trim().length < 10) {
       toast.error("Please write a slightly longer message.");
       return;
     }
 
     setPending(true);
-
     try {
       await send({
         name: name.trim(),
@@ -57,11 +79,9 @@ export function ContactDialog({ children }: { children: ReactNode }) {
       });
 
       toast.success("Message sent, thanks for reaching out.");
-
       setName("");
       setEmail("");
       setMessage("");
-      setOpen(false);
     } catch (error) {
       toast.error(
         error instanceof Error ? error.message : "Something went wrong.",
@@ -72,16 +92,36 @@ export function ContactDialog({ children }: { children: ReactNode }) {
   }
 
   return (
-    <Dialog open={open} onOpenChange={setOpen}>
-      <DialogTrigger asChild>{children}</DialogTrigger>
+    <ChapterSheet id="contact" number="06" name="Contact">
+      <div className="grid gap-10 md:grid-cols-2 md:gap-16">
+        <div className="flex flex-col">
+          <h2 className="font-semibold text-2xl text-white tracking-tight sm:text-4xl">
+            Get in touch
+          </h2>
+          <p className="mt-5 max-w-md text-base text-white/90 leading-relaxed">
+            Have a problem worth building for, a role, or just want to talk
+            systems and AI? Send a note, it lands straight in my inbox.
+          </p>
 
-      <DialogContent className="min-w-xl border border-white/10 backdrop-blur-xl">
-        <DialogHeader>
-          <DialogTitle className="inline-flex items-center gap-2 text-white/90">
-            <ContactIcon size={18} />
-            <span>Get in touch</span>
-          </DialogTitle>
-        </DialogHeader>
+          <ul className="mt-8 flex flex-col gap-3">
+            {CONTACTS.map(({ label, value, href, Icon }) => (
+              <li key={label}>
+                <a
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noreferrer" : undefined}
+                  className="group inline-flex items-center gap-3 text-white/60 transition-colors duration-150 hover:text-white"
+                >
+                  <Icon size={18} />
+
+                  <span className="flex flex-col leading-tight">
+                    <span className="text-sm">{value}</span>
+                  </span>
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Input
@@ -93,7 +133,7 @@ export function ContactDialog({ children }: { children: ReactNode }) {
             autoComplete="name"
             disabled={pending}
             required
-            className="px-4 text-white/80 placeholder:-translate-y-px placeholder:text-xs placeholder:text-white/80"
+            className="px-4 h-9 text-white/80 placeholder:-translate-y-px placeholder:text-xs placeholder:text-white/80"
           />
 
           <Input
@@ -106,7 +146,7 @@ export function ContactDialog({ children }: { children: ReactNode }) {
             autoComplete="email"
             disabled={pending}
             required
-            className="px-4 text-white/80 placeholder:-translate-y-px placeholder:text-xs placeholder:text-white/80"
+            className="px-4 h-9 text-white/80 placeholder:-translate-y-px placeholder:text-xs placeholder:text-white/80"
           />
 
           <Textarea
@@ -120,11 +160,11 @@ export function ContactDialog({ children }: { children: ReactNode }) {
             className="h-40 overflow-hidden p-4 text-white/80 placeholder:text-xs placeholder:text-white/80"
           />
 
-          <DialogFooter>
+          <div className="flex justify-end">
             <button
               type="submit"
               disabled={pending}
-              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm tracking-wide text-white/60 transition-all duration-150 hover:bg-white/10 hover:text-white active:scale-90 disabled:pointer-events-none disabled:opacity-60"
+              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/60 tracking-wide transition-all duration-150 hover:bg-white/10 hover:text-white active:scale-90 disabled:pointer-events-none disabled:opacity-60"
             >
               {pending ? (
                 <>
@@ -138,9 +178,9 @@ export function ContactDialog({ children }: { children: ReactNode }) {
                 </>
               )}
             </button>
-          </DialogFooter>
+          </div>
         </form>
-      </DialogContent>
-    </Dialog>
+      </div>
+    </ChapterSheet>
   );
 }

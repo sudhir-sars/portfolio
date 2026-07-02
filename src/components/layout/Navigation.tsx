@@ -6,18 +6,6 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import {
-  Sheet,
-  SheetClose,
-  SheetContent,
-  SheetDescription,
-  SheetHeader,
-  SheetTitle,
-  SheetTrigger,
-} from "@/components/ui/sheet";
-import { api } from "@/convex/_generated/api";
-import { DURATION, EASE } from "@/lib/animation";
-import { useChapterStore } from "@/store/chapter";
-import {
   CloseIcon,
   ContactIcon,
   type IconComponent,
@@ -27,7 +15,18 @@ import {
   ResumeIcon,
   ViewIcon,
   WriteIcon,
-} from "../ui/icons";
+} from "@/components/ui/icons";
+import {
+  Sheet,
+  SheetClose,
+  SheetContent,
+  SheetHeader,
+  SheetTitle,
+  SheetTrigger,
+} from "@/components/ui/sheet";
+import { api } from "@/convex/_generated/api";
+import { DURATION, EASE } from "@/lib/animation";
+import { useChapterStore } from "@/store/chapter";
 
 const SECTIONS: { label: string; href: string; icon: IconComponent }[] = [
   {

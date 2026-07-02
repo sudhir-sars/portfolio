@@ -1,38 +1,26 @@
 "use client";
 
-import { motion } from "motion/react";
 import Link from "next/link";
+import { Sheet } from "@/components/Sheet";
 import { ArrowRightIcon } from "@/components/ui/icons";
-import { DURATION, EASE } from "@/lib/animation";
-import { JOURNEY, type JourneyPage } from "./journey";
+import { JOURNEY, type JourneyPage } from "@/data/journey";
 
 const pad = (n: number) => String(n).padStart(2, "0");
 
-/** One moment in the timeline: a frosted card that reveals as it scrolls in. */
+/** One moment in the timeline: a shared Sheet that reveals as it scrolls in. */
 function JourneyMoment({ page, index }: { page: JourneyPage; index: number }) {
   return (
-    <motion.article
-      initial={{ opacity: 0, y: 48 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, amount: 0.2 }}
-      transition={{ duration: DURATION.slow, ease: EASE.out }}
-      className="relative flex w-full flex-col overflow-hidden rounded-[2rem] border border-white/12 bg-white/[0.08] p-4 backdrop-blur-xl shadow-[0_40px_120px_-20px_rgba(0,0,0,0.7)] sm:p-8 md:p-12"
-    >
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 top-0 h-px bg-gradient-to-r from-transparent via-white/25 to-transparent"
-      />
-
+    <Sheet>
       {page.ghost && (
         <span
           aria-hidden
-          className="pointer-events-none absolute right-6 top-6 z-0 hidden select-none font-mono font-bold leading-none text-white/[0.05] sm:block sm:text-9xl"
+          className="pointer-events-none absolute right-0 top-0 z-0 hidden select-none font-mono font-bold leading-none text-white/[0.05] sm:block sm:text-9xl"
         >
           {page.ghost}
         </span>
       )}
 
-      <span className="absolute top-6 left-6 font-mono text-xs tracking-widest text-white/25 sm:top-8 sm:left-8">
+      <span className="absolute left-0 top-0 font-mono text-xs tracking-widest text-white/25">
         {pad(index + 1)} / {pad(JOURNEY.length)}
       </span>
 
@@ -98,16 +86,16 @@ function JourneyMoment({ page, index }: { page: JourneyPage; index: number }) {
           </dl>
         )}
       </div>
-    </motion.article>
+    </Sheet>
   );
 }
 
 /**
- * The full-page Journey reader at /journey. Unlike the old in-stack section,
- * this is a single vertical scroll: every moment is stacked as its own frosted
- * card and reveals on scroll, so the whole story reads top to bottom.
+ * The full-page Journey reader at /journey: a single vertical scroll where
+ * every moment is stacked as its own {@link Sheet} and reveals on scroll, so
+ * the whole story reads top to bottom.
  */
-export function JourneyExperience() {
+export function JourneyTimeline() {
   return (
     <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-24 sm:gap-8 sm:px-6 md:px-8">
       <div className="flex items-center justify-between">
