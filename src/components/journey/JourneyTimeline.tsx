@@ -20,10 +20,6 @@ function JourneyMoment({ page, index }: { page: JourneyPage; index: number }) {
         </span>
       )}
 
-      <span className="absolute left-0 top-0 font-mono text-xs tracking-widest text-white/25">
-        {pad(index + 1)} / {pad(JOURNEY.length)}
-      </span>
-
       <div className="relative z-10 mt-8 flex max-w-3xl flex-col gap-5 sm:mt-4">
         {page.era && (
           <span className="font-mono text-xs uppercase tracking-[0.3em] text-white/40">
