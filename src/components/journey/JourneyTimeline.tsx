@@ -27,7 +27,7 @@ function JourneyMoment({ page, index }: { page: JourneyPage; index: number }) {
           </span>
         )}
 
-        <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+        <h2 className="text-xl font-semibold tracking-tight text-white sm:text-3xl">
           {page.title}
         </h2>
 

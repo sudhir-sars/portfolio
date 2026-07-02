@@ -58,7 +58,7 @@ export function ProjectDetail({ project }: { project: FeaturedProject }) {
             <p className="text-xs uppercase tracking-[0.15em] text-white/45">
               {project.role} · {project.period}
             </p>
-            <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-4xl">
+            <h1 className="text-2xl font-semibold tracking-tight text-white sm:text-4xl">
               {project.name}
             </h1>
             <p className="max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
