@@ -12,7 +12,7 @@ export function WritingSection() {
           <h2 className="font-semibold text-2xl text-white tracking-tight sm:text-4xl">
             Writing
           </h2>
-          <p className="mt-5 text-base text-white/90 leading-relaxed">
+          <p className="mt-5 text-sm text-white/90 leading-relaxed sm:text-base">
             Notes from building real systems, the constraints, the trade-offs,
             and what actually worked.
           </p>

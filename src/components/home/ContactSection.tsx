@@ -98,7 +98,7 @@ export function ContactSection() {
           <h2 className="font-semibold text-2xl text-white tracking-tight sm:text-4xl">
             Get in touch
           </h2>
-          <p className="mt-5 max-w-md text-base text-white/90 leading-relaxed">
+          <p className="mt-5 max-w-md text-sm text-white/90 leading-relaxed sm:text-base">
             Have a problem worth building for, a role, or just want to talk
             systems and AI? Send a note, it lands straight in my inbox.
           </p>

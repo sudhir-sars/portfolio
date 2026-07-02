@@ -88,7 +88,7 @@ export function FeaturedWorkSection() {
           <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-4xl">
             Featured Work
           </h2>
-          <p className="mt-5 text-base leading-relaxed text-white/55">
+          <p className="mt-5 text-sm leading-relaxed text-white/55 sm:text-base">
             A few things I've built end to end, from real-time AI systems to the
             low-latency infrastructure underneath them. Open any card for the
             full write-up.
