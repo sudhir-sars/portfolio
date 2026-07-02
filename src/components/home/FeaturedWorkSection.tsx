@@ -85,7 +85,7 @@ export function FeaturedWorkSection() {
     <ChapterSheet id="projects" number="02" name="Featured Work">
       <div className="flex flex-col gap-10">
         <div className="max-w-2xl">
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             Featured Work
           </h2>
           <p className="mt-5 text-sm leading-relaxed text-white/55 sm:text-base">

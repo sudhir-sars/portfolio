@@ -39,7 +39,7 @@ export function JourneyCard() {
             The long version
           </span>
 
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-4xl">
+          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
             The Journey
           </h2>
 
