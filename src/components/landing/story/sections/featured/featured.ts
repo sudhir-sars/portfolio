@@ -16,7 +16,7 @@ export interface ProjectSection {
   bullets?: string[];
 }
 
-/** The long-form write-up rendered at /[slug]. */
+/** The long-form write-up rendered at /projects/[slug]. */
 export interface ProjectDetail {
   /** Lead paragraph under the title. */
   summary: string;
@@ -26,7 +26,7 @@ export interface ProjectDetail {
 }
 
 export interface FeaturedProject {
-  /** URL segment for the detail page, e.g. "infina" → /infina. */
+  /** URL segment for the detail page, e.g. "infina" → /projects/infina. */
   slug: string;
   name: string;
   role: string;

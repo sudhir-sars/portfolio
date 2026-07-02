@@ -11,7 +11,7 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
       {/* Stretched link: covers the whole card so it's clickable, while the
           external links below stay real, non-nested anchors above it. */}
       <Link
-        href={`/${project.slug}`}
+        href={`/projects/${project.slug}`}
         aria-label={`Read the ${project.name} write-up`}
         className="absolute inset-0 z-10 rounded-2xl"
       />

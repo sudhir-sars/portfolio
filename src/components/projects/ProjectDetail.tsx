@@ -9,7 +9,8 @@ import { DURATION, EASE } from "@/lib/animation";
 import { useChapterStore } from "@/store/chapter";
 
 /**
- * Long-form write-up for a single featured project, rendered at /[slug].
+ * Long-form write-up for a single featured project, rendered at
+ * /projects/[slug].
  * Shares the frosted-paper language of the homepage chapter sheets so a detail
  * page reads as another sheet pulled out of the stack.
  */
