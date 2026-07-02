@@ -10,7 +10,7 @@ export function ResumeSection() {
       <div className="flex flex-col gap-10">
         <div className=" relative flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-2xl">
-            <h2 className="font-semibold text-2xl text-white tracking-tight sm:text-3xl">
+            <h2 className="font-semibold text-xl text-white tracking-tight sm:text-3xl">
               Résumé
             </h2>
             <p className="mt-5 text-sm text-white/90 leading-relaxed sm:text-base">
@@ -25,7 +25,8 @@ export function ResumeSection() {
               className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3.5 py-1.5 text-xs tracking-wide text-white/80 transition-all duration-150 hover:bg-white/10 hover:text-white active:scale-95"
             >
               <ResumeIcon className="h-3.5 w-3.5" />
-              <span>View Full Résumé</span>
+              <span className="hidden sm:inline">View Full Résumé</span>
+              <span className="sm:hidden">View PDF</span>
             </a>
           </div>
         </div>

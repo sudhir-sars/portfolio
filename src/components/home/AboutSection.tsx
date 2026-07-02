@@ -36,7 +36,7 @@ export function AboutSection() {
     <ChapterSheet id="about" number="01" name="About Me">
       <div className="flex flex-col gap-12">
         <div className="max-w-3xl">
-          <h2 className="text-2xl font-semibold tracking-tight text-white sm:text-3xl">
+          <h2 className="text-xl font-semibold tracking-tight text-white sm:text-3xl">
             Sudhir Saraswat
           </h2>
           <p className="mt-3 text-xs uppercase tracking-[0.15em] text-white/45">
