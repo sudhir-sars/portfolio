@@ -32,27 +32,27 @@ import {
 const SECTIONS: { label: string; href: string; icon: IconComponent }[] = [
   {
     label: "Projects",
-    href: "#projects",
+    href: "/#projects",
     icon: ProjectIcon,
   },
   {
     label: "Journey",
-    href: "#journey",
+    href: "/journey",
     icon: JourneyIcon,
   },
   {
     label: "Writing",
-    href: "#writing",
+    href: "/#writing",
     icon: WriteIcon,
   },
   {
     label: "Résumé",
-    href: "#resume",
+    href: "/#resume",
     icon: ResumeIcon,
   },
   {
     label: "Contact",
-    href: "#contact",
+    href: "/#contact",
     icon: ContactIcon,
   },
 ] as const;
@@ -91,7 +91,7 @@ export function Navigation() {
       <nav className="mx-auto flex items-center justify-between gap-3 px-4 py-4 sm:px-8 sm:py-5 lg:px-20 xl:px-[185px]">
         <div className="rounded-full border border-white/10 bg-white/5 p-1 backdrop-blur-xl">
           <Link
-            href="#top"
+            href="/#top"
             className="inline-flex items-center gap-1.5 rounded-full px-3.5 py-1 text-xs tracking-wide text-white/60 transition-colors duration-150 hover:text-white"
           >
             <AnimatePresence mode="wait" initial={false}>

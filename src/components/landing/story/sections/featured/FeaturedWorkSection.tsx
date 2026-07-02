@@ -1,12 +1,21 @@
 "use client";
 
+import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { ChapterSheet } from "../../ChapterSheet";
 import { FEATURED, type FeaturedProject } from "./featured";
 
 function ProjectCard({ project }: { project: FeaturedProject }) {
   return (
-    <article className="group flex h-full flex-col rounded-2xl border border-white/10  p-6 transition-colors duration-200 hover:border-white/20 hover:bg-white/[0.05]">
+    <article className="group relative flex h-full flex-col rounded-2xl border border-white/10 p-6 transition-colors duration-200 hover:border-white/20 hover:bg-white/[0.05]">
+      {/* Stretched link: covers the whole card so it's clickable, while the
+          external links below stay real, non-nested anchors above it. */}
+      <Link
+        href={`/${project.slug}`}
+        aria-label={`Read the ${project.name} write-up`}
+        className="absolute inset-0 z-10 rounded-2xl"
+      />
+
       <header className="flex items-start justify-between gap-4">
         <div>
           <h3 className="text-lg font-semibold text-white">{project.name}</h3>
@@ -16,7 +25,7 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
         </div>
 
         {project.links.length > 0 && (
-          <div className="flex shrink-0 flex-wrap justify-end gap-1.5">
+          <div className="relative z-20 flex shrink-0 flex-wrap justify-end gap-1.5">
             {project.links.map((link) => (
               <a
                 key={link.label}
@@ -26,7 +35,7 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
                 className="inline-flex items-center gap-1 rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-white/60 transition-colors duration-150 hover:border-white/25 hover:text-white"
               >
                 {link.label}
-                <ArrowRightIcon className="h-3 w-3 transition-transform duration-150 group-hover:translate-x-0.5" />
+                <ArrowRightIcon className="h-3 w-3" />
               </a>
             ))}
           </div>
@@ -52,7 +61,7 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
         ))}
       </ul>
 
-      <div className="mt-auto flex flex-wrap gap-1.5 pt-6">
+      <div className="mt-auto flex flex-wrap items-center gap-1.5 pt-6">
         {project.tech.map((tag) => (
           <span
             key={tag}
@@ -61,6 +70,11 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
             {tag}
           </span>
         ))}
+
+        <span className="ml-auto inline-flex items-center gap-1 text-[11px] font-medium text-white/45 transition-colors duration-150 group-hover:text-white">
+          Read write-up
+          <ArrowRightIcon className="h-3 w-3 transition-transform duration-150 group-hover:translate-x-0.5" />
+        </span>
       </div>
     </article>
   );
@@ -76,13 +90,14 @@ export function FeaturedWorkSection() {
           </h2>
           <p className="mt-5 text-base leading-relaxed text-white/55">
             A few things I've built end to end, from real-time AI systems to the
-            low-latency infrastructure underneath them.
+            low-latency infrastructure underneath them. Open any card for the
+            full write-up.
           </p>
         </div>
 
         <div className="grid gap-4 sm:grid-cols-2">
           {FEATURED.map((project) => (
-            <ProjectCard key={project.name} project={project} />
+            <ProjectCard key={project.slug} project={project} />
           ))}
         </div>
       </div>
