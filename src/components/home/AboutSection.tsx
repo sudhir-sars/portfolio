@@ -42,7 +42,7 @@ export function AboutSection() {
           <p className="mt-3 text-xs uppercase tracking-[0.15em] text-white/45">
             Founding Engineer | Systems &amp; AI
           </p>
-          <p className="mt-7 text-base leading-relaxed text-white/90">
+          <p className="mt-7 text-sm leading-relaxed text-white/90 sm:text-base">
             I build close to the metal and close to the user, creating real-time
             AI systems, agentic workflows, and the low-latency infrastructure
             underneath them. Most recently, I was a founding engineer at Infina,

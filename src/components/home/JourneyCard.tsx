@@ -43,14 +43,14 @@ export function JourneyCard() {
             The Journey
           </h2>
 
-          <p className="text-base leading-relaxed text-white/75">
+          <p className="text-sm leading-relaxed text-white/75 sm:text-base">
             Not a résumé, a build log. Eighteen moments from a school computer I
             wasn't allowed to touch to the real-time AI systems I ship today,
             curiosity first, engineering second, and the two slowly becoming the
             same thing.
           </p>
 
-          <p className="text-base leading-relaxed text-white/55">
+          <p className="text-sm leading-relaxed text-white/55 sm:text-base">
             It starts at ten, pulling cables out of a school desktop to see what
             each one killed, and runs through a homemade JARVIS, a media player
             that was secretly a recommender, quantized language models on a

@@ -61,7 +61,7 @@ export function ProjectDetail({ project }: { project: FeaturedProject }) {
             <h1 className="text-3xl font-semibold tracking-tight text-white sm:text-5xl">
               {project.name}
             </h1>
-            <p className="max-w-2xl text-base leading-relaxed text-white/70">
+            <p className="max-w-2xl text-sm leading-relaxed text-white/70 sm:text-base">
               {detail.summary}
             </p>
           </div>

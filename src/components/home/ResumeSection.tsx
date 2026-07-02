@@ -13,7 +13,7 @@ export function ResumeSection() {
             <h2 className="font-semibold text-2xl text-white tracking-tight sm:text-4xl">
               Résumé
             </h2>
-            <p className="mt-5 text-base text-white/90 leading-relaxed">
+            <p className="mt-5 text-sm text-white/90 leading-relaxed sm:text-base">
               The short version, full history in the PDF.
             </p>
           </div>
