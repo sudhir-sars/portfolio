@@ -1,11 +1,11 @@
 "use client";
 
 import { motion } from "motion/react";
-import { EASE } from "@/lib/animation";
 
 /**
- * Minimal scroll cue: a slim vertical track with a dot that drifts down and
- * fades, hinting that the story is revealed by scrolling.
+ * Scroll cue: a slim vertical track with a dot that drifts down and fades,
+ * hinting that the story is revealed by scrolling. Kept animated on purpose —
+ * it's the signal to scroll.
  */
 export function ScrollIndicator() {
   return (
@@ -16,7 +16,7 @@ export function ScrollIndicator() {
           animate={{ y: [40, -12], opacity: [0, 1, 0] }}
           transition={{
             duration: 0.5,
-            ease: EASE.inOut,
+            ease: [0.65, 0, 0.35, 1],
             repeat: Infinity,
             repeatDelay: 0.2,
           }}
