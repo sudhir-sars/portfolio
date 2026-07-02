@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
-import { Background } from "@/components/background/Background";
-import { Navigation } from "@/components/navigation/Navigation";
+import { Background } from "@/components/layout/Background";
+import { Navigation } from "@/components/layout/Navigation";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
 import { ThemeProvider } from "@/providers/theme";

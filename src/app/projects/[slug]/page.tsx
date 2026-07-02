@@ -1,10 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
-import {
-  FEATURED,
-  getProject,
-} from "@/components/landing/story/sections/featured/featured";
 import { ProjectDetail } from "@/components/projects/ProjectDetail";
+import { FEATURED, getProject } from "@/data/featured";
 
 interface PageProps {
   params: Promise<{ slug: string }>;

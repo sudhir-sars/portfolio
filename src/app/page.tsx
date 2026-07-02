@@ -1,10 +1,10 @@
-import { Landing } from "@/components/landing/Landing";
-import { AboutSection } from "@/components/landing/story/sections/AboutSection";
-import { ContactSection } from "@/components/landing/story/sections/contact/ContactSection";
-import { FeaturedWorkSection } from "@/components/landing/story/sections/featured/FeaturedWorkSection";
-import { JourneyCard } from "@/components/landing/story/sections/journey/JourneyCard";
-import { ResumeSection } from "@/components/landing/story/sections/resume/ResumeSection";
-import { WritingSection } from "@/components/landing/story/sections/writing/WritingSection";
+import { AboutSection } from "@/components/home/AboutSection";
+import { ContactSection } from "@/components/home/ContactSection";
+import { FeaturedWorkSection } from "@/components/home/FeaturedWorkSection";
+import { JourneyCard } from "@/components/home/JourneyCard";
+import { Landing } from "@/components/home/Landing";
+import { ResumeSection } from "@/components/home/ResumeSection";
+import { WritingSection } from "@/components/home/WritingSection";
 
 export default function Home() {
   return (

@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/icons";
-import { ChapterSheet } from "../../ChapterSheet";
+import { ChapterSheet } from "./ChapterSheet";
 
 /**
  * The homepage entry point to the Journey. Deliberately quiet: no stats, no

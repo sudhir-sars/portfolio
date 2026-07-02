@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { JourneyExperience } from "@/components/landing/story/sections/journey/JourneyExperience";
+import { JourneyTimeline } from "@/components/journey/JourneyTimeline";
 
 export const metadata: Metadata = {
   title: "Journey — README",
@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function JourneyPage() {
   return (
     <main>
-      <JourneyExperience />
+      <JourneyTimeline />
     </main>
   );
 }

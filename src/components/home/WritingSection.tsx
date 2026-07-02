@@ -1,8 +1,8 @@
 "use client";
 
 import { ArrowRightIcon } from "@/components/ui/icons";
-import { ChapterSheet } from "../../ChapterSheet";
-import { WRITING } from "./writing";
+import { WRITING } from "@/data/writing";
+import { ChapterSheet } from "./ChapterSheet";
 
 export function WritingSection() {
   return (

@@ -1,6 +1,6 @@
 "use client";
 
-import { ChapterSheet } from "../ChapterSheet";
+import { ChapterSheet } from "./ChapterSheet";
 
 /** Tech grouped the way it reads on the resume. */
 const STACK: { label: string; items: string[] }[] = [
