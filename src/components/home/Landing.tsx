@@ -2,7 +2,7 @@
 
 import { motion } from "motion/react";
 import { useRef } from "react";
-import { ScrollIndicator } from "@/components/scroll/ScrollIndicator";
+import { ScrollIndicator } from "@/components/home/ScrollIndicator";
 import { DURATION, EASE } from "@/lib/animation";
 import { useTrackActiveChapter } from "@/store/chapter";
 

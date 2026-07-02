@@ -1,8 +1,8 @@
 "use client";
 
 import { ResumeIcon } from "@/components/ui/icons";
-import { ChapterSheet } from "../../ChapterSheet";
-import { EDUCATION, EXPERIENCE } from "./resume";
+import { EDUCATION, EXPERIENCE } from "@/data/resume";
+import { ChapterSheet } from "./ChapterSheet";
 
 export function ResumeSection() {
   return (
