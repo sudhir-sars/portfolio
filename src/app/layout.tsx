@@ -55,7 +55,7 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className="min-h-screen  ">
+      <body className="min-h-svh min-w-svw  ">
         <ConvexClientProvider>
           <ThemeProvider forcedTheme="dark" enableSystem>
             <Background />

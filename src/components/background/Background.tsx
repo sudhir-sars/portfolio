@@ -1,13 +1,14 @@
+import Image from "next/image";
+
 export function Background() {
   return (
     <div aria-hidden className="fixed inset-0 -z-10 overflow-hidden bg-black">
-      <video
-        className="h-full w-full object-cover"
-        src="/bg.mp4"
-        autoPlay
-        loop
-        muted
-        playsInline
+      <Image
+        src="/bg.png"
+        alt="Background"
+        fill
+        priority
+        className="object-cover"
       />
 
       <div className="absolute inset-0 bg-black/75" />

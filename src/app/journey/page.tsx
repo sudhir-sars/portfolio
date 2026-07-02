@@ -8,9 +8,5 @@ export const metadata: Metadata = {
 };
 
 export default function JourneyPage() {
-  return (
-    <main>
-      <JourneyExperience />
-    </main>
-  );
+  return <JourneyExperience />;
 }

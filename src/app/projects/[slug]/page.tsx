@@ -32,9 +32,5 @@ export default async function ProjectPage({ params }: PageProps) {
   const project = getProject(slug);
   if (!project) notFound();
 
-  return (
-    <main>
-      <ProjectDetail project={project} />
-    </main>
-  );
+  return <ProjectDetail project={project} />;
 }

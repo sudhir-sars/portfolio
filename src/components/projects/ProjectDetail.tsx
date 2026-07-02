@@ -8,16 +8,9 @@ import { ArrowRightIcon } from "@/components/ui/icons";
 import { DURATION, EASE } from "@/lib/animation";
 import { useChapterStore } from "@/store/chapter";
 
-/**
- * Long-form write-up for a single featured project, rendered at
- * /projects/[slug].
- * Shares the frosted-paper language of the homepage chapter sheets so a detail
- * page reads as another sheet pulled out of the stack.
- */
 export function ProjectDetail({ project }: { project: FeaturedProject }) {
   const { detail } = project;
 
-  // Keep the nav pill anchored to the section this project came from.
   const setActive = useChapterStore((state) => state.setActive);
   useEffect(() => {
     setActive({ number: "02", name: "Featured Work" });
@@ -25,12 +18,12 @@ export function ProjectDetail({ project }: { project: FeaturedProject }) {
   }, [setActive]);
 
   return (
-    <section className="flex min-h-screen w-full items-start justify-center px-4 py-24 sm:px-6 md:px-8">
+    <section className="flex h-full w-full items-start justify-center px-4 py-24 sm:px-6 md:px-8">
       <motion.div
         initial={{ opacity: 0, y: 64 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: DURATION.slow, ease: EASE.out }}
-        className="w-full max-w-5xl"
+        className="w-full max-w-6xl"
       >
         <article className="relative flex w-full flex-col overflow-hidden rounded-[2rem] border border-white/12 bg-white/[0.08] backdrop-blur-xl shadow-[0_40px_120px_-20px_rgba(0,0,0,0.7)]">
           <div
