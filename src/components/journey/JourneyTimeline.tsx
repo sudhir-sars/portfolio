@@ -97,8 +97,12 @@ function JourneyMoment({ page, index }: { page: JourneyPage; index: number }) {
  */
 export function JourneyTimeline() {
   return (
-    <div className="mx-auto flex w-full max-w-7xl flex-col gap-6 px-4 py-24 sm:gap-8 sm:px-6 md:px-8">
-      <div className="flex items-center justify-between">
+    // Full-width, centered, padded container — matches the homepage/project
+    // pattern so each Sheet reaches the same max-w-7xl. Do NOT put max-w-7xl on
+    // this container: that would cap the cards at 7xl minus padding, narrower
+    // than the homepage sheets.
+    <div className="flex w-full flex-col items-center gap-6 px-4 py-24 sm:gap-8 sm:px-6 md:px-8">
+      <div className="flex w-full max-w-7xl items-center justify-between">
         <Link
           href="/"
           className="inline-flex items-center gap-1.5 text-xs uppercase tracking-[0.2em] text-white/45 transition-colors duration-150 hover:text-white/80"
