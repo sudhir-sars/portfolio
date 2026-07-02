@@ -9,7 +9,7 @@ export function WritingSection() {
     <ChapterSheet id="writing" number="04" name="Writing">
       <div className="flex flex-col gap-10">
         <div className="max-w-2xl">
-          <h2 className="font-semibold text-2xl text-white tracking-tight sm:text-4xl">
+          <h2 className="font-semibold text-2xl text-white tracking-tight sm:text-3xl">
             Writing
           </h2>
           <p className="mt-5 text-sm text-white/90 leading-relaxed sm:text-base">
