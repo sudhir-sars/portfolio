@@ -38,7 +38,7 @@ export function ChapterSheet({
     <section
       ref={sectionRef}
       id={id}
-      className="flex min-h-screen w-full items-center justify-center px-4 py-10 sm:px-6 sm:py-24 md:px-8"
+      className="flex w-full items-center justify-center px-4 py-16 sm:px-6 sm:py-24 md:px-8"
     >
       <Sheet contentClassName={contentClassName}>{children}</Sheet>
     </section>

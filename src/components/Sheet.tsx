@@ -31,7 +31,7 @@ export function Sheet({ children, className, contentClassName }: SheetProps) {
 
       <div
         className={cn(
-          "relative flex flex-col p-4 sm:p-8 md:p-12",
+          "relative flex flex-col p-6 sm:p-8 md:p-12",
           contentClassName,
         )}
       >

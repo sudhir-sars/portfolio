@@ -11,7 +11,7 @@ export interface EducationEntry {
   period: string;
 }
 
-/** Canonical résumé link. The /cv route redirects here. */
+/** Canonical resume link. The /cv route redirects here. */
 export const RESUME_URL =
   "https://drive.google.com/file/d/1Ev_53rkAx2-qjYfqJhWttZY34NV47Efx/view?usp=sharing";
 

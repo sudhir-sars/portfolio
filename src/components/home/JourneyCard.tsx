@@ -44,7 +44,7 @@ export function JourneyCard() {
           </h2>
 
           <p className="text-sm leading-relaxed text-white/75 sm:text-base">
-            Not a résumé, a build log. Eighteen moments from a school computer I
+            Not a resume, a build log. Eighteen moments from a school computer I
             wasn't allowed to touch to the real-time AI systems I ship today,
             curiosity first, engineering second, and the two slowly becoming the
             same thing.

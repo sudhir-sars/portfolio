@@ -23,7 +23,7 @@ export const JOURNEY: JourneyPage[] = [
   {
     title: "The Journey",
     subtitle:
-      "Not a résumé, a build log. Eighteen commits from a school computer I wasn't allowed to touch to the systems I ship today.",
+      "Not a resume, a build log. Eighteen commits from a school computer I wasn't allowed to touch to the systems I ship today.",
     blocks: [
       "Every project here started the same way: something annoyed me, fascinated me, or refused to work, and I couldn't let it go.",
       "Some of it shipped. Some of it died in a professor's office. One of them never got submitted at all. The lessons came from all three.",

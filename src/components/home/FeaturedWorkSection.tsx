@@ -70,11 +70,6 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
             {tag}
           </span>
         ))}
-
-        <span className="ml-auto inline-flex items-center gap-1 text-[11px] font-medium text-white/45 transition-colors duration-150 group-hover:text-white">
-          Read write-up
-          <ArrowRightIcon className="h-3 w-3 transition-transform duration-150 group-hover:translate-x-0.5" />
-        </span>
       </div>
     </article>
   );
