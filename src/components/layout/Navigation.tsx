@@ -39,6 +39,11 @@ const SECTIONS: { label: string; href: string; icon: IconComponent }[] = [
     icon: ProjectIcon,
   },
   {
+    label: "Writings",
+    href: "/#writing",
+    icon: WriteIcon,
+  },
+  {
     label: "Resume",
     href: "/#resume",
     icon: ResumeIcon,

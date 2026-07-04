@@ -8,24 +8,14 @@ export interface WritingEntry {
   href: string;
 }
 
-// TODO: replace the "#" hrefs with the real post URLs once published.
 export const WRITING: WritingEntry[] = [
   {
-    title: "Designing Edge-Native Prompt Infrastructure",
+    title: "Building PromptX: Shipping LLM Prompts Without Deploying Code",
     blurb:
-      "Serving prompts in sub-millisecond from 300+ locations with weighted rollouts and instant rollback, on Cloudflare Workers + KV.",
-    date: "2025",
+      "A deep dive into the architecture behind PromptX—immutable prompt versioning, edge delivery, deterministic A/B testing, and a control plane for shipping LLM prompts without redeploying applications.",
+    date: "2026",
     tag: "Systems",
-    readingTime: "10 min",
-    href: "#",
-  },
-  {
-    title: "Building an LSM Key-Value Store in Rust",
-    blurb:
-      "Write-ahead logging, compaction, and the read/write paths behind p99 9.3ms writes and 3.0ms reads under load.",
-    date: "2025",
-    tag: "Rust",
-    readingTime: "12 min",
-    href: "#",
+    readingTime: "18 min",
+    href: "https://medium.com/p/building-promptx-shipping-llm-prompts-without-deploying-code-f6d697f615c4",
   },
 ];

@@ -92,7 +92,7 @@ export function ContactSection() {
   }
 
   return (
-    <ChapterSheet id="contact" number="05" name="Contact">
+    <ChapterSheet id="contact" number="06" name="Contact">
       <div className="grid gap-10 md:grid-cols-2 md:gap-16">
         <div className="flex flex-col">
           <h2 className="font-semibold text-xl text-white tracking-tight sm:text-3xl">
