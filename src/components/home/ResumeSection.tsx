@@ -6,7 +6,7 @@ import { ChapterSheet } from "./chatper/ChapterSheet";
 
 export function ResumeSection() {
   return (
-    <ChapterSheet id="resume" number="05" name="Resume">
+    <ChapterSheet id="resume" number="04" name="Resume">
       <div className="flex flex-col gap-10">
         <div className=" relative flex flex-wrap items-end justify-between gap-4">
           <div className="max-w-2xl">

@@ -11,6 +11,7 @@ import {
   NewTwitterIcon,
   QuillWrite02Icon,
   TimeHalfPassIcon,
+  UserAiIcon,
   ViewIcon as ViewIconHg,
 } from "@hugeicons/core-free-icons";
 import {
@@ -50,3 +51,4 @@ export const LinkedinIcon = createIcon(Linkedin02Icon);
 export const GithubIcon = createIcon(GithubIconHg);
 export const MenuIcon = createIcon(Menu01Icon);
 export const CloseIcon = createIcon(Cancel01Icon);
+export const UserIcon = createIcon(UserAiIcon);

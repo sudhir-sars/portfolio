@@ -9,10 +9,10 @@ import {
   CloseIcon,
   ContactIcon,
   type IconComponent,
-  JourneyIcon,
   MenuIcon,
   ProjectIcon,
   ResumeIcon,
+  UserIcon,
   ViewIcon,
   WriteIcon,
 } from "@/components/ui/icons";
@@ -29,14 +29,14 @@ import { useChapterStore } from "@/store/chapter";
 
 const SECTIONS: { label: string; href: string; icon: IconComponent }[] = [
   {
+    label: "About",
+    href: "/#about",
+    icon: UserIcon,
+  },
+  {
     label: "Projects",
     href: "/#projects",
     icon: ProjectIcon,
-  },
-  {
-    label: "Writing",
-    href: "/#writing",
-    icon: WriteIcon,
   },
   {
     label: "Resume",
