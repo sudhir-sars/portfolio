@@ -1,100 +1,92 @@
-"use client";
-
 import { ResumeIcon } from "@/components/ui/icons";
 import { EDUCATION, EXPERIENCE } from "@/data/resume";
-import { ChapterSheet } from "./ChapterSheet";
+import { Section } from "./Section";
 
 export function ResumeSection() {
   return (
-    <ChapterSheet id="resume" number="05" name="Resume">
-      <div className="flex flex-col gap-10">
-        <div className=" relative flex flex-wrap items-end justify-between gap-4">
-          <div className="max-w-2xl">
-            <h2 className="font-semibold text-xl text-white tracking-tight sm:text-3xl">
-              Resume
-            </h2>
-            <p className="mt-5 text-sm text-white/90 leading-relaxed sm:text-base">
-              The short version, full history in the PDF.
-            </p>
-          </div>
-          <div className="absolute right-0 top-0">
-            <a
-              href="/cv"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-3 py-1.5 sm:px-4 sm:py-2 text-xs tracking-wide text-white/80 transition-all duration-150 hover:bg-white/10 hover:text-white active:scale-95"
+    <Section
+      id="resume"
+      label="Resume"
+      title="Experience"
+      lead="The short version — full history in the PDF."
+      action={
+        <a
+          href="/cv"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border border-border px-4 py-2 text-sm font-medium text-foreground transition-colors duration-150 hover:bg-secondary"
+        >
+          <ResumeIcon className="h-3.5 w-3.5" />
+          <span className="hidden sm:inline">View full resume</span>
+          <span className="sm:hidden">View PDF</span>
+        </a>
+      }
+    >
+      <div className="flex flex-col gap-14">
+        <div className="flex flex-col gap-10">
+          {EXPERIENCE.map((job) => (
+            <div
+              key={`${job.company}-${job.role}`}
+              className="grid gap-3 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-10"
             >
-              <ResumeIcon className="h-3.5 w-3.5" />
-              <span className="hidden sm:inline">View Full Resume</span>
-              <span className="sm:hidden">View PDF</span>
-            </a>
-          </div>
-        </div>
+              <span className="font-mono text-xs text-muted-foreground/80 sm:pt-1">
+                {job.period}
+              </span>
 
-        <section>
-          <h3 className="text-xs text-white/35 uppercase tracking-[0.2em]">
-            Experience
-          </h3>
-          <div className="mt-6 flex flex-col gap-8">
-            {EXPERIENCE.map((job) => (
-              <div key={`${job.company}-${job.role}`}>
-                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
-                  <h4 className="font-medium text-base text-white/90 sm:text-lg">
-                    {job.role}
-                    <span className="">
-                      {" "}
-                      <span className="text-sm px-3">|</span>
-                      {job.company}
-                    </span>
-                  </h4>
-                  <span className="font-mono text-xs text-white/40">
-                    {job.period}
+              <div>
+                <h4 className="text-base font-medium tracking-tight text-foreground sm:text-lg">
+                  {job.role}
+                  <span className="text-muted-foreground">
+                    {" "}
+                    · {job.company}
                   </span>
-                </div>
+                </h4>
 
-                <ul className="mt-3 space-y-2">
+                <ul className="mt-3.5 space-y-2.5">
                   {job.points.map((point) => (
                     <li
                       key={point}
-                      className="flex items-start gap-3 text-sm text-white/60 leading-relaxed"
+                      className="flex items-start gap-3 text-sm leading-relaxed text-muted-foreground"
                     >
                       <span
                         aria-hidden
-                        className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/40"
+                        className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand"
                       />
                       {point}
                     </li>
                   ))}
                 </ul>
               </div>
-            ))}
-          </div>
-        </section>
+            </div>
+          ))}
+        </div>
 
-        <section>
-          <h3 className="text-xs text-white/35 uppercase tracking-[0.2em]">
+        <div>
+          <h3 className="text-[0.6875rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
             Education
           </h3>
           <div className="mt-6 flex flex-col gap-4">
             {EDUCATION.map((edu) => (
               <div
                 key={edu.degree}
-                className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1"
+                className="grid gap-1 sm:grid-cols-[10rem_minmax(0,1fr)] sm:gap-10"
               >
-                <div>
-                  <h4 className="font-medium text-base text-white/90">
-                    {edu.degree}
-                  </h4>
-                  <p className="mt-0.5 text-sm text-white/45">{edu.school}</p>
-                </div>
-                <span className="font-mono text-xs text-white/40">
+                <span className="font-mono text-xs text-muted-foreground/80 sm:pt-1">
                   {edu.period}
                 </span>
+                <div>
+                  <h4 className="text-base font-medium tracking-tight text-foreground">
+                    {edu.degree}
+                  </h4>
+                  <p className="mt-0.5 text-sm text-muted-foreground">
+                    {edu.school}
+                  </p>
+                </div>
               </div>
             ))}
           </div>
-        </section>
+        </div>
       </div>
-    </ChapterSheet>
+    </Section>
   );
 }

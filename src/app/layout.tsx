@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Geist_Mono, Inter } from "next/font/google";
-import { Background } from "@/components/layout/Background";
+import { Footer } from "@/components/layout/Footer";
 import { Navigation } from "@/components/layout/Navigation";
 import { Toaster } from "@/components/ui/sonner";
 import { cn } from "@/lib/utils";
@@ -16,12 +16,13 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "README",
-  description: "Start from the beginning.",
+  title: "Sudhir Saraswat — Systems & AI Engineer",
+  description:
+    "Founding engineer building real-time AI systems, agentic workflows, and the low-latency infrastructure underneath them.",
 };
 
 export const viewport: Viewport = {
-  themeColor: "#000000",
+  themeColor: "#f7f5f1",
 };
 
 export default function RootLayout({
@@ -55,12 +56,12 @@ export default function RootLayout({
         />
         <link rel="manifest" href="/site.webmanifest" />
       </head>
-      <body className="min-h-svh min-w-svw  ">
+      <body className="min-h-svh bg-background text-foreground">
         <ConvexClientProvider>
-          <ThemeProvider forcedTheme="dark" enableSystem>
-            <Background />
+          <ThemeProvider forcedTheme="light">
             <Navigation />
             {children}
+            <Footer />
             <Toaster position="bottom-right" />
           </ThemeProvider>
         </ConvexClientProvider>

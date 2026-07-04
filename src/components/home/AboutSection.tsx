@@ -1,6 +1,4 @@
-"use client";
-
-import { ChapterSheet } from "./ChapterSheet";
+import { Section } from "./Section";
 
 /** Tech grouped the way it reads on the resume. */
 const STACK: { label: string; items: string[] }[] = [
@@ -33,73 +31,58 @@ const HIGHLIGHTS: string[] = [
 
 export function AboutSection() {
   return (
-    <ChapterSheet id="about" number="01" name="About Me">
-      <div className="flex flex-col gap-12">
-        <div className="max-w-3xl">
-          <h2 className="text-xl font-semibold tracking-tight text-white sm:text-3xl">
-            Sudhir Saraswat
-          </h2>
-          <p className="mt-3 text-xs uppercase tracking-[0.15em] text-white/45">
-            Founding Engineer | Systems &amp; AI
-          </p>
-          <p className="mt-7 text-sm leading-relaxed text-white/90 sm:text-base">
-            I build close to the metal and close to the user, creating real-time
-            AI systems, agentic workflows, and the low-latency infrastructure
-            underneath them. Most recently, I was a founding engineer at Infina,
-            where I shipped a cross-platform desktop assistant that turns speech
-            into executable actions in under a second across the tools people
-            already work in. Building it convinced me that software should feel
-            a little magical...
-          </p>
+    <Section
+      id="about"
+      label="Profile"
+      title="Built close to the metal, shipped close to the user"
+      lead="Most recently a founding engineer at Infina, where I built a cross-platform desktop assistant that turns speech into executable actions in under a second — across the tools people already work in. Before that: retrieval pipelines serving thousands of users, and a storage engine written from the WAL up."
+    >
+      <div className="grid gap-12 sm:grid-cols-2 sm:gap-16">
+        <div>
+          <h3 className="text-[0.6875rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            What I work with
+          </h3>
+          <div className="mt-6 space-y-6">
+            {STACK.map((group) => (
+              <div key={group.label}>
+                <p className="text-xs font-medium text-muted-foreground">
+                  {group.label}
+                </p>
+                <div className="mt-2.5 flex flex-wrap gap-2">
+                  {group.items.map((item) => (
+                    <span
+                      key={item}
+                      className="rounded-md border border-border bg-card px-2.5 py-1 text-xs text-foreground/80"
+                    >
+                      {item}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
-        <div className="grid gap-10 sm:grid-cols-2">
-          <div>
-            <h3 className="text-xs uppercase tracking-[0.15em] text-white/35">
-              What I work with
-            </h3>
-            <div className="mt-5 space-y-5">
-              {STACK.map((group) => (
-                <div key={group.label}>
-                  <p className="text-[0.7rem] uppercase tracking-[0.15em] text-white/40">
-                    {group.label}
-                  </p>
-                  <div className="mt-2 flex flex-wrap gap-2">
-                    {group.items.map((item) => (
-                      <span
-                        key={item}
-                        className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-xs text-white/65"
-                      >
-                        {item}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          <div>
-            <h3 className="text-xs uppercase tracking-[0.15em] text-white/35">
-              Highlights
-            </h3>
-            <ul className="mt-5 space-y-3">
-              {HIGHLIGHTS.map((item) => (
-                <li
-                  key={item}
-                  className="flex items-start gap-3 text-sm text-white/60"
-                >
-                  <span
-                    aria-hidden
-                    className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/40"
-                  />
-                  {item}
-                </li>
-              ))}
-            </ul>
-          </div>
+        <div>
+          <h3 className="text-[0.6875rem] font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+            Highlights
+          </h3>
+          <ul className="mt-6 space-y-3.5">
+            {HIGHLIGHTS.map((item) => (
+              <li
+                key={item}
+                className="flex items-start gap-3 text-sm leading-relaxed text-foreground/80"
+              >
+                <span
+                  aria-hidden
+                  className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand"
+                />
+                {item}
+              </li>
+            ))}
+          </ul>
         </div>
       </div>
-    </ChapterSheet>
+    </Section>
   );
 }

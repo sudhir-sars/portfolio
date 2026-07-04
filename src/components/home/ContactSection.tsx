@@ -9,12 +9,13 @@ import {
   GithubIcon,
   LinkedinIcon,
   MailIcon,
+  TwitterIcon,
 } from "@/components/ui/icons";
 import { Input } from "@/components/ui/input";
 import { Spinner } from "@/components/ui/spinner";
 import { Textarea } from "@/components/ui/textarea";
 import { api } from "@/convex/_generated/api";
-import { ChapterSheet } from "./ChapterSheet";
+import { Section } from "./Section";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -41,7 +42,7 @@ const CONTACTS = [
     label: "X",
     value: "@sudhir_sars",
     href: "https://x.com/sudhir_sars",
-    Icon: GithubIcon,
+    Icon: TwitterIcon,
   },
 ] as const;
 
@@ -92,36 +93,28 @@ export function ContactSection() {
   }
 
   return (
-    <ChapterSheet id="contact" number="06" name="Contact">
-      <div className="grid gap-10 md:grid-cols-2 md:gap-16">
-        <div className="flex flex-col">
-          <h2 className="font-semibold text-xl text-white tracking-tight sm:text-3xl">
-            Get in touch
-          </h2>
-          <p className="mt-5 max-w-md text-sm text-white/90 leading-relaxed sm:text-base">
-            Have a problem worth building for, a role, or just want to talk
-            systems and AI? Send a note, it lands straight in my inbox.
-          </p>
-
-          <ul className="mt-8 flex flex-col gap-3">
-            {CONTACTS.map(({ label, value, href, Icon }) => (
-              <li key={label}>
-                <a
-                  href={href}
-                  target={href.startsWith("http") ? "_blank" : undefined}
-                  rel={href.startsWith("http") ? "noreferrer" : undefined}
-                  className="group inline-flex items-center gap-3 text-white/60 transition-colors duration-150 hover:text-white"
-                >
-                  <Icon size={18} />
-
-                  <span className="flex flex-col leading-tight">
-                    <span className="text-sm">{value}</span>
-                  </span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </div>
+    <Section
+      id="contact"
+      label="Contact"
+      title="Get in touch"
+      lead="For roles, systems work, or anything worth building — send a note, it lands straight in my inbox."
+    >
+      <div className="grid gap-12 md:grid-cols-2 md:gap-16">
+        <ul className="flex flex-col gap-4">
+          {CONTACTS.map(({ label, value, href, Icon }) => (
+            <li key={label}>
+              <a
+                href={href}
+                target={href.startsWith("http") ? "_blank" : undefined}
+                rel={href.startsWith("http") ? "noreferrer" : undefined}
+                className="group inline-flex items-center gap-3 text-muted-foreground transition-colors duration-150 hover:text-foreground"
+              >
+                <Icon size={18} />
+                <span className="text-sm">{value}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
 
         <form onSubmit={handleSubmit} className="flex flex-col gap-4">
           <Input
@@ -133,7 +126,6 @@ export function ContactSection() {
             autoComplete="name"
             disabled={pending}
             required
-            className="px-4 h-9 text-white/80 placeholder:-translate-y-px placeholder:text-xs placeholder:text-white/80"
           />
 
           <Input
@@ -146,7 +138,6 @@ export function ContactSection() {
             autoComplete="email"
             disabled={pending}
             required
-            className="px-4 h-9 text-white/80 placeholder:-translate-y-px placeholder:text-xs placeholder:text-white/80"
           />
 
           <Textarea
@@ -157,14 +148,14 @@ export function ContactSection() {
             placeholder="What would you like to talk about?"
             disabled={pending}
             required
-            className="h-40 overflow-hidden p-4 text-white/80 placeholder:text-xs placeholder:text-white/80"
+            className="h-40 overflow-hidden"
           />
 
           <div className="flex justify-end">
             <button
               type="submit"
               disabled={pending}
-              className="inline-flex items-center justify-center gap-1.5 rounded-full border border-white/10 bg-white/5 px-4 py-1.5 text-sm text-white/60 tracking-wide transition-all duration-150 hover:bg-white/10 hover:text-white active:scale-90 disabled:pointer-events-none disabled:opacity-60"
+              className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-primary px-6 text-sm font-medium text-primary-foreground transition-opacity duration-150 hover:opacity-85 disabled:pointer-events-none disabled:opacity-60"
             >
               {pending ? (
                 <>
@@ -181,6 +172,6 @@ export function ContactSection() {
           </div>
         </form>
       </div>
-    </ChapterSheet>
+    </Section>
   );
 }

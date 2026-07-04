@@ -1,25 +1,25 @@
-"use client";
-
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { FEATURED, type FeaturedProject } from "@/data/featured";
-import { ChapterSheet } from "./ChapterSheet";
+import { Section } from "./Section";
 
 function ProjectCard({ project }: { project: FeaturedProject }) {
   return (
-    <article className="group relative flex h-full flex-col rounded-2xl border border-white/10 p-6 transition-colors duration-200 hover:border-white/20 hover:bg-white/[0.05]">
+    <article className="group relative flex h-full flex-col rounded-xl border border-border bg-card p-7 transition-[border-color,box-shadow] duration-200 hover:border-foreground/25 hover:shadow-[0_1px_3px_rgba(38,33,26,0.06),0_8px_24px_-12px_rgba(38,33,26,0.12)]">
       {/* Stretched link: covers the whole card so it's clickable, while the
           external links below stay real, non-nested anchors above it. */}
       <Link
         href={`/projects/${project.slug}`}
         aria-label={`Read the ${project.name} write-up`}
-        className="absolute inset-0 z-10 rounded-2xl"
+        className="absolute inset-0 z-10 rounded-xl"
       />
 
       <header className="flex items-start justify-between gap-4">
         <div>
-          <h3 className="text-lg font-semibold text-white">{project.name}</h3>
-          <p className="mt-1 text-[0.7rem] uppercase tracking-[0.15em] text-white/60">
+          <h3 className="text-lg font-semibold tracking-tight text-foreground">
+            {project.name}
+          </h3>
+          <p className="mt-1 text-xs font-medium text-muted-foreground">
             {project.role}
           </p>
         </div>
@@ -32,7 +32,7 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
                 href={link.href}
                 target="_blank"
                 rel="noreferrer"
-                className="inline-flex items-center gap-1 rounded-full border border-white/10 px-2.5 py-1 text-[11px] text-white/60 transition-colors duration-150 hover:border-white/25 hover:text-white"
+                className="inline-flex items-center gap-1 rounded-full border border-border px-2.5 py-1 text-[11px] font-medium text-muted-foreground transition-colors duration-150 hover:border-foreground/30 hover:text-foreground"
               >
                 {link.label}
                 <ArrowRightIcon className="h-3 w-3" />
@@ -42,60 +42,45 @@ function ProjectCard({ project }: { project: FeaturedProject }) {
         )}
       </header>
 
-      <p className="mt-4 text-sm leading-relaxed text-white/85">
+      <p className="mt-4 text-sm leading-relaxed text-muted-foreground">
         {project.tagline}
       </p>
 
-      <ul className="mt-5 space-y-2">
+      <ul className="mt-6 space-y-2.5">
         {project.metrics.map((metric) => (
           <li
             key={metric}
-            className="flex items-start gap-2.5 text-sm text-white/80"
+            className="flex items-start gap-3 text-sm leading-relaxed text-foreground/80"
           >
             <span
               aria-hidden
-              className="mt-1.5 h-1 w-1 shrink-0 rounded-full bg-white/40"
+              className="mt-2 h-1 w-1 shrink-0 rounded-full bg-brand"
             />
             {metric}
           </li>
         ))}
       </ul>
 
-      <div className="mt-auto flex flex-wrap items-center gap-1.5 pt-6">
-        {project.tech.map((tag) => (
-          <span
-            key={tag}
-            className="rounded-full bg-white/[0.06] px-2.5 py-0.5 text-[11px] text-white/55"
-          >
-            {tag}
-          </span>
-        ))}
-      </div>
+      <p className="mt-auto pt-7 font-mono text-[11px] tracking-tight text-muted-foreground/80">
+        {project.tech.join(" · ")}
+      </p>
     </article>
   );
 }
 
 export function FeaturedWorkSection() {
   return (
-    <ChapterSheet id="projects" number="02" name="Featured Work">
-      <div className="flex flex-col gap-10">
-        <div className="max-w-2xl">
-          <h2 className="text-xl font-semibold tracking-tight text-white sm:text-3xl">
-            Featured Work
-          </h2>
-          <p className="mt-5 text-sm leading-relaxed text-white/55 sm:text-base">
-            A few things I've built end to end, from real-time AI systems to the
-            low-latency infrastructure underneath them. Open any card for the
-            full write-up.
-          </p>
-        </div>
-
-        <div className="grid gap-4 sm:grid-cols-2">
-          {FEATURED.map((project) => (
-            <ProjectCard key={project.slug} project={project} />
-          ))}
-        </div>
+    <Section
+      id="projects"
+      label="Selected Work"
+      title="Systems built end to end"
+      lead="Real-time AI products, edge infrastructure, and a storage engine — each shipped to production and measured. Open any card for the full write-up."
+    >
+      <div className="grid gap-5 sm:grid-cols-2">
+        {FEATURED.map((project) => (
+          <ProjectCard key={project.slug} project={project} />
+        ))}
       </div>
-    </ChapterSheet>
+    </Section>
   );
 }

@@ -10,7 +10,6 @@ import {
   Menu01Icon,
   NewTwitterIcon,
   QuillWrite02Icon,
-  TimeHalfPassIcon,
   ViewIcon as ViewIconHg,
 } from "@hugeicons/core-free-icons";
 import {
@@ -30,7 +29,6 @@ export function createIcon(icon: IconSvgElement) {
         size={16}
         strokeWidth={1.5}
         color="currentColor"
-        className="text-white/80"
         {...props}
       />
     );
@@ -41,7 +39,6 @@ export const ResumeIcon = createIcon(File01Icon);
 export const MailIcon = createIcon(MailAtSign02Icon);
 export const WriteIcon = createIcon(QuillWrite02Icon);
 export const ProjectIcon = createIcon(LibraryIcon);
-export const JourneyIcon = createIcon(TimeHalfPassIcon);
 export const ContactIcon = createIcon(MailSend02Icon);
 export const ViewIcon = createIcon(ViewIconHg);
 export const ArrowRightIcon = createIcon(ArrowRight01Icon);
