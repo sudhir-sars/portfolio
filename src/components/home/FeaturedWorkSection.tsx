@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { FEATURED, type FeaturedProject } from "@/data/featured";
-import { ChapterSheet } from "./ChapterSheet";
+import { ChapterSheet } from "./chatper/ChapterSheet";
 
 function ProjectCard({ project }: { project: FeaturedProject }) {
   return (

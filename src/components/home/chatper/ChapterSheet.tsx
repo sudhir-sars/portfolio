@@ -2,7 +2,7 @@
 
 import type { ReactNode } from "react";
 import { useMemo, useRef } from "react";
-import { Sheet } from "@/components/Sheet";
+import { Sheet } from "@/components/home/chatper/Sheet";
 import { useTrackActiveChapter } from "@/store/chapter";
 
 interface ChapterSheetProps {

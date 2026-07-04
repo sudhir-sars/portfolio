@@ -2,7 +2,7 @@
 
 import { ArrowRightIcon } from "@/components/ui/icons";
 import { WRITING } from "@/data/writing";
-import { ChapterSheet } from "./ChapterSheet";
+import { ChapterSheet } from "./chatper/ChapterSheet";
 
 export function WritingSection() {
   return (

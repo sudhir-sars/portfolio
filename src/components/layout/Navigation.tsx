@@ -34,11 +34,6 @@ const SECTIONS: { label: string; href: string; icon: IconComponent }[] = [
     icon: ProjectIcon,
   },
   {
-    label: "Journey",
-    href: "/journey",
-    icon: JourneyIcon,
-  },
-  {
     label: "Writing",
     href: "/#writing",
     icon: WriteIcon,

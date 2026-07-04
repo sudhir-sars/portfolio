@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { useEffect } from "react";
-import { Sheet } from "@/components/Sheet";
+import { Sheet } from "@/components/home/chatper/Sheet";
 import { ArrowRightIcon } from "@/components/ui/icons";
 import type { FeaturedProject } from "@/data/featured";
 import { useChapterStore } from "@/store/chapter";

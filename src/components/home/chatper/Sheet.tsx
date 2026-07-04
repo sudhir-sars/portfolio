@@ -20,7 +20,7 @@ export function Sheet({ children, className, contentClassName }: SheetProps) {
   return (
     <article
       className={cn(
-        "relative flex w-full max-w-7xl flex-col overflow-hidden rounded-2xl border border-white/12 bg-white/[0.08] shadow-[0_40px_120px_-20px_rgba(0,0,0,0.7)] backdrop-blur-xl sm:rounded-3xl",
+        "relative flex w-full max-w-7xl flex-col overflow-hidden rounded-2xl border border-white/12 bg-white/[0.08] shadow-[0_40px_120px_-20px_rgba(0,0,0,0.7)] backdrop-blur-xl sm:rounded-[32px]",
         className,
       )}
     >

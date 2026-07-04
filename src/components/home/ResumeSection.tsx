@@ -2,7 +2,7 @@
 
 import { ResumeIcon } from "@/components/ui/icons";
 import { EDUCATION, EXPERIENCE } from "@/data/resume";
-import { ChapterSheet } from "./ChapterSheet";
+import { ChapterSheet } from "./chatper/ChapterSheet";
 
 export function ResumeSection() {
   return (
