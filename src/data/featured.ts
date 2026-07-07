@@ -248,7 +248,7 @@ export const FEATURED: FeaturedProject[] = [
       "Backend infrastructure for an AI-powered education platform, scalable RAG pipelines, a frictionless onboarding flow, and the database work that keeps it fast at scale.",
     metrics: [
       "6,000+ users",
-      "1.5M+ embeddings indexed",
+      "10.5M+ embeddings indexed",
       "1,900% increase in active users",
     ],
     tech: ["Rust", "MongoDB", "Knowledge Systems", "TypeScript"],
