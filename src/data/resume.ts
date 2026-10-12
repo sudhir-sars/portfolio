@@ -13,7 +13,7 @@ export interface EducationEntry {
 
 /** Canonical resume link. The /cv route redirects here. */
 export const RESUME_URL =
-  "https://drive.google.com/file/d/1Ev_53rkAx2-qjYfqJhWttZY34NV47Efx/view?usp=sharing";
+  "https://drive.google.com/file/d/1LlFkrBjmFil0QRw8OGhSF3ByNiwdpzFb/view?usp=sharing";
 
 export const EXPERIENCE: ExperienceEntry[] = [
   {
